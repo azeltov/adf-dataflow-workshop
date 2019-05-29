@@ -1,2 +1,2 @@
-# Azure Data Factory - Data Flow Workshop
+# Azure Data Factory - Mapping Data Flow Workshop
 
