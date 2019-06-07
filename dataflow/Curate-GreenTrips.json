@@ -1,0 +1,112 @@
+{
+	"name": "Curate-GreenTrips",
+	"properties": {
+		"folder": {
+			"name": "02-CurateFromRaw"
+		},
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "raw_parquet_green_trips",
+						"type": "DatasetReference"
+					},
+					"name": "RawGreenTrips",
+					"script": "source(output(\n\t\ttaxi_type as string,\n\t\tvendor_id as integer,\n\t\tpickup_datetime as timestamp,\n\t\tdropoff_datetime as timestamp,\n\t\tstore_and_fwd_flag as string,\n\t\trate_code_id as integer,\n\t\tpickup_location_id as string,\n\t\tdropoff_location_id as string,\n\t\tpickup_longitude as double,\n\t\tpickup_latitude as double,\n\t\tdropoff_longitude as double,\n\t\tdropoff_latitude as double,\n\t\tpassenger_count as integer,\n\t\ttrip_distance as double,\n\t\tfare_amount as double,\n\t\textra as double,\n\t\tmta_tax as double,\n\t\ttip_amount as double,\n\t\ttolls_amount as double,\n\t\tehail_fee as double,\n\t\timprovement_surcharge as double,\n\t\ttotal_amount as double,\n\t\tpayment_type as integer,\n\t\ttrip_type as integer,\n\t\ttrip_year as string,\n\t\ttrip_month as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\trowUrlColumn: 'dataset_file_nm',\n\twildcardPaths:['transactional-data/green-trips/*/*/*.parquet']) ~> RawGreenTrips"
+				},
+				{
+					"dataset": {
+						"referenceName": "raw_prq_payment_type",
+						"type": "DatasetReference"
+					},
+					"name": "PaymentCodes",
+					"script": "source(output(\n\t\tpayment_type as short,\n\t\tabbreviation as string,\n\t\tdescription as string\n\t),\n\tallowSchemaDrift: false,\n\tvalidateSchema: false) ~> PaymentCodes"
+				},
+				{
+					"dataset": {
+						"referenceName": "raw_prq_rate_code",
+						"type": "DatasetReference"
+					},
+					"name": "RateCodes",
+					"script": "source(output(\n\t\trate_code_id as short,\n\t\tdescription as string\n\t),\n\tallowSchemaDrift: false,\n\tvalidateSchema: false) ~> RateCodes"
+				},
+				{
+					"dataset": {
+						"referenceName": "raw_prq_taxi_zone",
+						"type": "DatasetReference"
+					},
+					"name": "TaxiZone",
+					"script": "source(output(\n\t\tLocationID as string,\n\t\tBorough as string,\n\t\tZone as string,\n\t\tservice_zone as string\n\t),\n\tallowSchemaDrift: false,\n\tvalidateSchema: false) ~> TaxiZone"
+				},
+				{
+					"dataset": {
+						"referenceName": "raw_prq_vendor",
+						"type": "DatasetReference"
+					},
+					"name": "Vendor",
+					"script": "source(output(\n\t\tvendor_id as short,\n\t\tabbreviation as string,\n\t\tdescription as string\n\t),\n\tallowSchemaDrift: false,\n\tvalidateSchema: false) ~> Vendor"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "curated_parquet_green_trips",
+						"type": "DatasetReference"
+					},
+					"name": "SinkToCuratedZone",
+					"script": "FinalColumnList sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tpartitionBy('key',\n\t\t0,\n\t\ttrip_year,\n\t\ttrip_month\n\t),\n\ttruncate:true) ~> SinkToCuratedZone"
+				}
+			],
+			"transformations": [
+				{
+					"name": "DedupeRawGreenTrips",
+					"description": "Dedupe",
+					"script": "RawGreenTrips aggregate(groupBy(taxi_type,\n\t\tvendor_id,\n\t\tpickup_datetime,\n\t\tdropoff_datetime,\n\t\tstore_and_fwd_flag,\n\t\trate_code_id,\n\t\tpickup_location_id,\n\t\tdropoff_location_id,\n\t\tpickup_longitude,\n\t\tpickup_latitude,\n\t\tdropoff_longitude,\n\t\tdropoff_latitude,\n\t\tpassenger_count,\n\t\ttrip_distance,\n\t\tfare_amount,\n\t\textra,\n\t\tmta_tax,\n\t\ttip_amount,\n\t\ttolls_amount,\n\t\tehail_fee,\n\t\timprovement_surcharge,\n\t\ttotal_amount,\n\t\tpayment_type,\n\t\ttrip_type,\n\t\ttrip_year,\n\t\ttrip_month,\n\t\tdataset_file_nm),\n\tcount_taxi_type = count(taxi_type)) ~> DedupeRawGreenTrips"
+				},
+				{
+					"name": "SelectDedupedGreenTrips",
+					"description": "Select deduped trips",
+					"script": "DedupeRawGreenTrips select(mapColumn(\n\t\ttaxi_type,\n\t\tvendor_id,\n\t\tpickup_datetime,\n\t\tdropoff_datetime,\n\t\tstore_and_fwd_flag,\n\t\trate_code_id,\n\t\tpickup_location_id,\n\t\tdropoff_location_id,\n\t\tpickup_longitude,\n\t\tpickup_latitude,\n\t\tdropoff_longitude,\n\t\tdropoff_latitude,\n\t\tpassenger_count,\n\t\ttrip_distance,\n\t\tfare_amount,\n\t\textra,\n\t\tmta_tax,\n\t\ttip_amount,\n\t\ttolls_amount,\n\t\tehail_fee,\n\t\timprovement_surcharge,\n\t\ttotal_amount,\n\t\tpayment_type,\n\t\ttrip_type,\n\t\tdataset_file_nm\n\t))~> SelectDedupedGreenTrips"
+				},
+				{
+					"name": "DeriveGreenTrips",
+					"description": "Add derived columns + columns with literal values",
+					"script": "SelectDedupedGreenTrips derive(pickup_year = year(pickup_datetime),\n\t\tpickup_month = month(pickup_datetime),\n\t\tpickup_day = dayOfWeek(pickup_datetime),\n\t\tpickup_hour = hour(pickup_datetime),\n\t\tpickup_minute = minute(pickup_datetime),\n\t\tpickup_second = second(pickup_datetime),\n\t\tdropoff_year = year(dropoff_datetime),\n\t\tdropoff_month = month(dropoff_datetime),\n\t\tdropoff_day = dayOfWeek(dropoff_datetime),\n\t\tdropoff_hour = hour(dropoff_datetime),\n\t\tdropoff_minute = minute(dropoff_datetime),\n\t\tdropoff_second = second(dropoff_datetime),\n\t\ttrip_year = substring(dataset_file_nm,(instr(dataset_file_nm, 'trip_year=')+10),4),\n\t\ttrip_month = substring(dataset_file_nm,(instr(dataset_file_nm, 'trip_month=')+11),2)) ~> DeriveGreenTrips"
+				},
+				{
+					"name": "JoinWithPaymentCodes",
+					"script": "DeriveGreenTrips, PaymentCodes join(SelectDedupedGreenTrips@payment_type == PaymentCodes@payment_type,\n\tjoinType:'left',\n\tbroadcast: 'right')~> JoinWithPaymentCodes"
+				},
+				{
+					"name": "JoinWithRateCodes",
+					"script": "JoinWithPaymentCodes, RateCodes join(SelectDedupedGreenTrips@rate_code_id == RateCodes@rate_code_id,\n\tjoinType:'left',\n\tbroadcast: 'right')~> JoinWithRateCodes"
+				},
+				{
+					"name": "JoinWithTaxiZoneForPickup",
+					"script": "JoinWithRateCodes, TaxiZone join(pickup_location_id == LocationID,\n\tjoinType:'left',\n\tbroadcast: 'right')~> JoinWithTaxiZoneForPickup"
+				},
+				{
+					"name": "ReorderAndRenamePickupZone",
+					"script": "JoinWithTaxiZoneForPickup select(mapColumn(\n\t\ttaxi_type,\n\t\tvendor_id,\n\t\tpickup_datetime,\n\t\tdropoff_datetime,\n\t\tstore_and_fwd_flag,\n\t\trate_code_id = SelectDedupedGreenTrips@rate_code_id,\n\t\tpickup_location_id,\n\t\tdropoff_location_id,\n\t\tpickup_longitude,\n\t\tpickup_latitude,\n\t\tdropoff_longitude,\n\t\tdropoff_latitude,\n\t\tpassenger_count,\n\t\ttrip_distance,\n\t\tfare_amount,\n\t\textra,\n\t\tmta_tax,\n\t\ttip_amount,\n\t\ttolls_amount,\n\t\tehail_fee,\n\t\timprovement_surcharge,\n\t\ttotal_amount,\n\t\tpayment_type = SelectDedupedGreenTrips@payment_type,\n\t\ttrip_type,\n\t\tdataset_file_nm,\n\t\tpickup_year,\n\t\tpickup_month,\n\t\tpickup_day,\n\t\tpickup_hour,\n\t\tpickup_minute,\n\t\tpickup_second,\n\t\tdropoff_year,\n\t\tdropoff_month,\n\t\tdropoff_day,\n\t\tdropoff_hour,\n\t\tdropoff_minute,\n\t\tdropoff_second,\n\t\ttrip_year,\n\t\ttrip_month,\n\t\tpayment_type_description = PaymentCodes@description,\n\t\trate_code_description = RateCodes@description,\n\t\tpickup_borough = Borough,\n\t\tpickup_zone = Zone,\n\t\tpickup_service_zone = service_zone\n\t))~> ReorderAndRenamePickupZone"
+				},
+				{
+					"name": "JoinWithTaxiZoneForDropOff",
+					"script": "ReorderAndRenamePickupZone, TaxiZone join(dropoff_location_id == LocationID,\n\tjoinType:'left',\n\tbroadcast: 'right')~> JoinWithTaxiZoneForDropOff"
+				},
+				{
+					"name": "ReorderAndRenameDropoffZone",
+					"script": "JoinWithTaxiZoneForDropOff select(mapColumn(\n\t\ttaxi_type,\n\t\tvendor_id,\n\t\tpickup_datetime,\n\t\tdropoff_datetime,\n\t\tstore_and_fwd_flag,\n\t\trate_code_id,\n\t\tpickup_location_id,\n\t\tdropoff_location_id,\n\t\tpickup_longitude,\n\t\tpickup_latitude,\n\t\tdropoff_longitude,\n\t\tdropoff_latitude,\n\t\tpassenger_count,\n\t\ttrip_distance,\n\t\tfare_amount,\n\t\textra,\n\t\tmta_tax,\n\t\ttip_amount,\n\t\ttolls_amount,\n\t\tehail_fee,\n\t\timprovement_surcharge,\n\t\ttotal_amount,\n\t\tpayment_type,\n\t\ttrip_type,\n\t\tdataset_file_nm,\n\t\tpickup_year,\n\t\tpickup_month,\n\t\tpickup_day,\n\t\tpickup_hour,\n\t\tpickup_minute,\n\t\tpickup_second,\n\t\tdropoff_year,\n\t\tdropoff_month,\n\t\tdropoff_day,\n\t\tdropoff_hour,\n\t\tdropoff_minute,\n\t\tdropoff_second,\n\t\ttrip_year,\n\t\ttrip_month,\n\t\tpayment_type_description,\n\t\trate_code_description,\n\t\tpickup_borough,\n\t\tpickup_zone,\n\t\tpickup_service_zone,\n\t\tdropoff_borough = Borough,\n\t\tdropoff_zone = Zone,\n\t\tdropoff_service_zone = service_zone\n\t))~> ReorderAndRenameDropoffZone"
+				},
+				{
+					"name": "JoinWithVendor",
+					"script": "ReorderAndRenameDropoffZone, Vendor join(ReorderAndRenameDropoffZone@vendor_id == Vendor@vendor_id,\n\tjoinType:'left',\n\tbroadcast: 'right')~> JoinWithVendor"
+				},
+				{
+					"name": "FinalColumnList",
+					"script": "JoinWithVendor select(mapColumn(\n\t\ttaxi_type,\n\t\tvendor_id = ReorderAndRenameDropoffZone@vendor_id,\n\t\tpickup_datetime,\n\t\tdropoff_datetime,\n\t\tstore_and_fwd_flag,\n\t\trate_code_id,\n\t\tpickup_location_id,\n\t\tdropoff_location_id,\n\t\tpickup_longitude,\n\t\tpickup_latitude,\n\t\tdropoff_longitude,\n\t\tdropoff_latitude,\n\t\tpassenger_count,\n\t\ttrip_distance,\n\t\tfare_amount,\n\t\textra,\n\t\tmta_tax,\n\t\ttip_amount,\n\t\ttolls_amount,\n\t\tehail_fee,\n\t\timprovement_surcharge,\n\t\ttotal_amount,\n\t\tpayment_type,\n\t\ttrip_type,\n\t\tdataset_file_nm,\n\t\tpickup_year,\n\t\tpickup_month,\n\t\tpickup_day,\n\t\tpickup_hour,\n\t\tpickup_minute,\n\t\tpickup_second,\n\t\tdropoff_year,\n\t\tdropoff_month,\n\t\tdropoff_day,\n\t\tdropoff_hour,\n\t\tdropoff_minute,\n\t\tdropoff_second,\n\t\ttrip_year,\n\t\ttrip_month,\n\t\tpayment_type_description,\n\t\trate_code_description,\n\t\tpickup_borough,\n\t\tpickup_zone,\n\t\tpickup_service_zone,\n\t\tdropoff_borough,\n\t\tdropoff_zone,\n\t\tdropoff_service_zone,\n\t\tvendor_abbreviation = abbreviation,\n\t\tvendor_description = description\n\t))~> FinalColumnList"
+				}
+			]
+		}
+	}
+}

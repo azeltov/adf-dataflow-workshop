@@ -1,0 +1,30 @@
+{
+	"name": "staging_csv_green_taxi_2015_2016H1",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "gws_adls_gen2_dataflow",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "01b-StagingToRaw-TransactionData/green-taxi/2015_2016H1"
+		},
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"container": "staging"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "payment_type|abbreviation|description",
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

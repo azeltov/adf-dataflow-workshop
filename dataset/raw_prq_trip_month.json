@@ -1,0 +1,36 @@
+{
+	"name": "raw_prq_trip_month",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "gws_adls_gen2_dataflow",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "01a-StagingToRaw-ReferenceData/trip-month"
+		},
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"folderPath": "reference-data/trip-month",
+				"container": "raw"
+			},
+			"compressionCodec": "none"
+		},
+		"schema": [
+			{
+				"name": "Trip_Month",
+				"type": "UTF8"
+			},
+			{
+				"name": "Month_Name_Short",
+				"type": "UTF8"
+			},
+			{
+				"name": "Month_Name_Full",
+				"type": "UTF8"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

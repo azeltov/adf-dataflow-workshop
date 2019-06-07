@@ -1,0 +1,25 @@
+{
+	"name": "Curate-Green-Trips",
+	"properties": {
+		"activities": [
+			{
+				"name": "CurateGreenTrips",
+				"type": "ExecuteDataFlow",
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"typeProperties": {
+					"dataflow": {
+						"referenceName": "Curate-GreenTrips",
+						"type": "DataFlowReference"
+					}
+				}
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

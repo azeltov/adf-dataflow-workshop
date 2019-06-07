@@ -1,0 +1,32 @@
+{
+	"name": "raw_prq_rate_code",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "gws_adls_gen2_dataflow",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "01a-StagingToRaw-ReferenceData/rate-code"
+		},
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"folderPath": "reference-data/rate-code",
+				"container": "raw"
+			},
+			"compressionCodec": "none"
+		},
+		"schema": [
+			{
+				"name": "rate_code_id",
+				"type": "INT_16"
+			},
+			{
+				"name": "description",
+				"type": "UTF8"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

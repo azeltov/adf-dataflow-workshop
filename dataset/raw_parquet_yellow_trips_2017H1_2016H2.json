@@ -1,0 +1,23 @@
+{
+	"name": "raw_parquet_yellow_trips_2017H1_2016H2",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "gws_adls_gen2_dataflow",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "01b-StagingToRaw-TransactionData/yellow-taxi/2017H1_2016H2"
+		},
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"folderPath": "transactional-data/yellow-trips",
+				"container": "raw"
+			},
+			"compressionCodec": "none"
+		},
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

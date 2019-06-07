@@ -1,0 +1,40 @@
+{
+	"name": "staging_csv_vendor",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "gws_adls_gen2_dataflow",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "01a-StagingToRaw-ReferenceData/vendor"
+		},
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "vendor_lookup.csv",
+				"folderPath": "reference-data",
+				"container": "staging"
+			},
+			"columnDelimiter": "|",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "vendor_id",
+				"type": "String"
+			},
+			{
+				"name": "abbreviation",
+				"type": "String"
+			},
+			{
+				"name": "description",
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
