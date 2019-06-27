@@ -23,13 +23,9 @@ You will need the storage account key fron your instructor in order to copy data
 
 <hr>
 
-### 3.  Select source
+### 3.  Select source - your instructor's storage account
 
 ![Copy-5](00-images/copy-5.png)
-
-<hr>
-
-![Copy-6](00-images/copy-6.png)
 
 <hr>
 
@@ -38,5 +34,9 @@ You will need the storage account key fron your instructor in order to copy data
 <hr>
 
 ![Copy-8](00-images/copy-8.png)
+
+<hr>
+
+![Copy-9](00-images/copy-9.png)
 
 <hr>
