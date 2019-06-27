@@ -64,6 +64,12 @@ You will need to provision the following resources:<br>
 
 <hr>
 
+3.0.2. Search for SQl database<br>
+
+![RDBMS-2](00-images/02-rdbms-2.png)
+
+<hr>
+
 ### 4.0. Provision a Data Factory
 
 4.0.1. Go to the resource group and click on "Add"<br>
