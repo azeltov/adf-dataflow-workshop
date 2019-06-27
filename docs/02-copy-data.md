@@ -13,8 +13,12 @@ You will need the storage account key fron your instructor in order to copy data
 
 <hr>
 
+### 2.  Start a copy activity
+
 ![Copy-3](00-images/copy-3.png)
 
 <hr>
 
-### 2.  
+![Copy-4](00-images/copy-4.png)
+
+<hr>
