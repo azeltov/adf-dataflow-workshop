@@ -16,41 +16,43 @@ You will need to provision the following resources:<br>
 
 ### 2.0. Provision a storage account (v2, hot tier, with HNS enabled) in your Azure subscription
 
-Go to the resource group and click on "Add"<br>
+2.0.1. Go to the resource group and click on "Add"<br>
 
 ![SA-1](00-images/01-storage-1.png)
 
 <hr>
 
-Look for storage account<br>
+2.0.2. Look for storage account<br>
 
 ![SA-2](00-images/01-storage-2.png)
 
 <hr>
 
-Click create<br>
+2.0.3. Click create<br>
 
 ![SA-3](00-images/01-storage-3.png)
 
 <hr>
 
-Fill in the details<br>
+2.0.4. Fill in the details<br>
 
 ![SA-4](00-images/01-storage-4.png)
 
 <hr>
 
-Enable HNS<br>
+2.0.5. Enable HNS<br>
 
 ![SA-5](00-images/01-storage-5.png)
 
 <hr>
 
-Validate and create<br>
+2.0.6. Validate and create<br>
 
 ![SA-6](00-images/01-storage-6.png)
 
 <hr>
+
+2.0.7.  Storage account should be visible in your resource group
 
 ![SA-7](00-images/01-storage-7.png)
 
