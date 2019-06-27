@@ -1,0 +1,8 @@
+# Provision resource for the workshop
+
+You will need to provision the following resources:<br>
+1.  Resource Group
+2.  Storage Account (HNS enabled - ADLS gen2)
+3.  Azure SQL Database
+4.  Azure Data Factory
+
