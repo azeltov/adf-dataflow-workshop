@@ -58,15 +58,33 @@ You will need to provision the following resources:<br>
 
 ### 3.0. Provision a SQl database
 
-3.0.1. Go to the resource group and click on "Add"<br>
+3.0.1. Go to the resource group and click on "Add", then search for "SQL database"<br>
 
 ![RDBMS-1](00-images/02-rdbms-1.png)
 
 <hr>
 
-3.0.2. Search for SQl database<br>
+3.0.2. Click create<br>
 
 ![RDBMS-2](00-images/02-rdbms-2.png)
+
+<hr>
+
+3.0.2. Click create<br>
+
+![RDBMS-2](00-images/02-rdbms-3.png)
+
+<hr>
+
+3.0.2. Click create<br>
+
+![RDBMS-2](00-images/02-rdbms-4.png)
+
+<hr>
+
+3.0.2. Click create<br>
+
+![RDBMS-2](00-images/02-rdbms-5.png)
 
 <hr>
 
