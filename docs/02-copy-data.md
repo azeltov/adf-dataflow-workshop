@@ -114,15 +114,18 @@ You will need the storage account key fron your instructor in order to copy data
 
 <hr>
 
-### 7.  Validate data copy in Storage Explorer
-
 ![Copy-27](00-images/copy-27.png)
 
 <hr>
 
+### 7.  Validate reference data copy in Storage Explorer
+
+
 ![Copy-28](00-images/copy-28.png)
 
 <hr>
+
+### 8.  Validate transactional data copy in Storage Explorer
 
 ![Copy-28](00-images/copy-28.png)
 
@@ -143,3 +146,5 @@ You will need the storage account key fron your instructor in order to copy data
 ![Copy-33](00-images/copy-33.png)
 
 <hr>
+
+If your data copy is successful, can proceed to the next module.
