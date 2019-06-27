@@ -1,4 +1,4 @@
-# Provision resource for the workshop
+# Module 1: Provision resource for the workshop
 
 You will need to provision the following resources:<br>
 1.  Resource Group
