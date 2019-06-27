@@ -56,6 +56,14 @@ You will need to provision the following resources:<br>
 
 ![SA-7](00-images/01-storage-7.png)
 
+### 3.0. Provision a SQl database
+
+3.0.1. Go to the resource group and click on "Add"<br>
+
+![RDBMS-1](00-images/02-rdbms-1.png)
+
+<hr>
+
 ### 4.0. Provision a Data Factory
 
 4.0.1. Go to the resource group and click on "Add"<br>
