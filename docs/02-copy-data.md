@@ -114,10 +114,32 @@ You will need the storage account key fron your instructor in order to copy data
 
 <hr>
 
+### 7.  Validate data copy in Storage Explorer
+
 ![Copy-27](00-images/copy-27.png)
 
 <hr>
 
 ![Copy-28](00-images/copy-28.png)
+
+<hr>
+
+![Copy-28](00-images/copy-28.png)
+
+<hr>
+
+![Copy-30](00-images/copy-30.png)
+
+<hr>
+
+![Copy-31](00-images/copy-31.png)
+
+<hr>
+
+![Copy-32](00-images/copy-32.png)
+
+<hr>
+
+![Copy-33](00-images/copy-33.png)
 
 <hr>
