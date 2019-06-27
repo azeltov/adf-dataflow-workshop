@@ -56,6 +56,26 @@ You will need to provision the following resources:<br>
 
 ![SA-7](00-images/01-storage-7.png)
 
+<hr>
+
+2.0.8. Create file systems
+
+![SA-8](00-images/01-storage-8.png)
+
+<hr>
+
+![SA-9](00-images/01-storage-9.png)
+
+<hr>
+
+![SA-10](00-images/01-storage-10.png)
+
+<hr>
+
+![SA-11](00-images/01-storage-11.png)
+
+<hr>
+
 ### 3.0. Provision a SQl database
 
 3.0.1. Go to the resource group and click on "Add", then search for "SQL database"<br>
