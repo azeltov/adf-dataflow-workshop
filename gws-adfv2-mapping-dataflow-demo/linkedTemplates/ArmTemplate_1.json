@@ -1,0 +1,998 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory Name",
+			"defaultValue": "gws-adfv2-mapping-dataflow-demo"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "[concat(parameters('factoryName'), '/staging_csv_rate_code')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "gws_adls_gen2_dataflow",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "01a-StagingToRaw-ReferenceData/rate-code"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"fileName": "rate_code_lookup.csv",
+						"folderPath": "reference-data",
+						"fileSystem": "staging"
+					},
+					"columnDelimiter": "|",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": [
+					{
+						"name": "rate_code_id|description",
+						"type": "String"
+					}
+				]
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/staging_csv_taxi_zone')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "gws_adls_gen2_dataflow",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "01a-StagingToRaw-ReferenceData/taxi-zone"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"fileName": "taxi_zone_lookup.csv",
+						"folderPath": "reference-data",
+						"fileSystem": "staging"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": [
+					{
+						"name": "LocationID",
+						"type": "String"
+					},
+					{
+						"name": "Borough",
+						"type": "String"
+					},
+					{
+						"name": "Zone",
+						"type": "String"
+					},
+					{
+						"name": "service_zone",
+						"type": "String"
+					}
+				]
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/staging_csv_trip_month')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "gws_adls_gen2_dataflow",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "01a-StagingToRaw-ReferenceData/trip-month"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"fileName": "trip_month_lookup.csv",
+						"folderPath": "reference-data",
+						"fileSystem": "staging"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": [
+					{
+						"name": "Trip_Month",
+						"type": "String"
+					},
+					{
+						"name": "Month_Name_Short",
+						"type": "String"
+					},
+					{
+						"name": "Month_Name_Full",
+						"type": "String"
+					}
+				]
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/staging_csv_trip_type')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "gws_adls_gen2_dataflow",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "01a-StagingToRaw-ReferenceData/trip-type"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"fileName": "trip_type_lookup.csv",
+						"folderPath": "reference-data",
+						"fileSystem": "staging"
+					},
+					"columnDelimiter": "|",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": [
+					{
+						"name": "trip_type",
+						"type": "String"
+					},
+					{
+						"name": "description",
+						"type": "String"
+					}
+				]
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/staging_csv_vendor')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "gws_adls_gen2_dataflow",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "01a-StagingToRaw-ReferenceData/vendor"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"fileName": "vendor_lookup.csv",
+						"folderPath": "reference-data",
+						"fileSystem": "staging"
+					},
+					"columnDelimiter": "|",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": [
+					{
+						"name": "vendor_id",
+						"type": "String"
+					},
+					{
+						"name": "abbreviation",
+						"type": "String"
+					},
+					{
+						"name": "description",
+						"type": "String"
+					}
+				]
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/staging_csv_yellow_taxi_2017H1_2016H2')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "gws_adls_gen2_dataflow",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "01b-StagingToRaw-TransactionData/yellow-taxi/2017H1_2016H2"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"fileSystem": "staging"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": []
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/staging_csv_yellow_taxi_trips_2015_2016H1')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "gws_adls_gen2_dataflow",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "01b-StagingToRaw-TransactionData/yellow-taxi/2015_2016H1"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"fileSystem": "staging"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": []
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Curate-GreenTrips')]",
+			"type": "Microsoft.DataFactory/factories/dataflows",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"folder": {
+					"name": "02-CurateFromRaw"
+				},
+				"type": "MappingDataFlow",
+				"typeProperties": {
+					"sources": [
+						{
+							"dataset": {
+								"referenceName": "raw_parquet_green_trips",
+								"type": "DatasetReference"
+							},
+							"name": "RawGreenTrips",
+							"typeProperties": {}
+						},
+						{
+							"dataset": {
+								"referenceName": "raw_prq_payment_type",
+								"type": "DatasetReference"
+							},
+							"name": "PaymentCodes",
+							"typeProperties": {}
+						},
+						{
+							"dataset": {
+								"referenceName": "raw_prq_rate_code",
+								"type": "DatasetReference"
+							},
+							"name": "RateCodes",
+							"typeProperties": {}
+						},
+						{
+							"dataset": {
+								"referenceName": "raw_prq_taxi_zone",
+								"type": "DatasetReference"
+							},
+							"name": "TaxiZone",
+							"typeProperties": {}
+						},
+						{
+							"dataset": {
+								"referenceName": "raw_prq_vendor",
+								"type": "DatasetReference"
+							},
+							"name": "Vendor",
+							"typeProperties": {}
+						}
+					],
+					"sinks": [
+						{
+							"dataset": {
+								"referenceName": "curated_parquet_green_trips",
+								"type": "DatasetReference"
+							},
+							"name": "SinkToCuratedZone"
+						}
+					],
+					"script": "\n\nsource(output(\n\t\ttaxi_type as string,\n\t\tvendor_id as integer,\n\t\tpickup_datetime as timestamp,\n\t\tdropoff_datetime as timestamp,\n\t\tstore_and_fwd_flag as string,\n\t\trate_code_id as integer,\n\t\tpickup_location_id as string,\n\t\tdropoff_location_id as string,\n\t\tpickup_longitude as double,\n\t\tpickup_latitude as double,\n\t\tdropoff_longitude as double,\n\t\tdropoff_latitude as double,\n\t\tpassenger_count as integer,\n\t\ttrip_distance as double,\n\t\tfare_amount as double,\n\t\textra as double,\n\t\tmta_tax as double,\n\t\ttip_amount as double,\n\t\ttolls_amount as double,\n\t\tehail_fee as double,\n\t\timprovement_surcharge as double,\n\t\ttotal_amount as double,\n\t\tpayment_type as integer,\n\t\ttrip_type as integer,\n\t\ttrip_year as string,\n\t\ttrip_month as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\trowUrlColumn: 'dataset_file_nm',\n\twildcardPaths:['transactional-data/green-trips/*/*/*.parquet']) ~> RawGreenTrips\nsource(output(\n\t\tpayment_type as short,\n\t\tabbreviation as string,\n\t\tdescription as string\n\t),\n\tallowSchemaDrift: false,\n\tvalidateSchema: false) ~> PaymentCodes\nsource(output(\n\t\trate_code_id as short,\n\t\tdescription as string\n\t),\n\tallowSchemaDrift: false,\n\tvalidateSchema: false) ~> RateCodes\nsource(output(\n\t\tLocationID as string,\n\t\tBorough as string,\n\t\tZone as string,\n\t\tservice_zone as string\n\t),\n\tallowSchemaDrift: false,\n\tvalidateSchema: false) ~> TaxiZone\nsource(output(\n\t\tvendor_id as short,\n\t\tabbreviation as string,\n\t\tdescription as string\n\t),\n\tallowSchemaDrift: false,\n\tvalidateSchema: false) ~> Vendor\nRawGreenTrips aggregate(groupBy(taxi_type,\n\t\tvendor_id,\n\t\tpickup_datetime,\n\t\tdropoff_datetime,\n\t\tstore_and_fwd_flag,\n\t\trate_code_id,\n\t\tpickup_location_id,\n\t\tdropoff_location_id,\n\t\tpickup_longitude,\n\t\tpickup_latitude,\n\t\tdropoff_longitude,\n\t\tdropoff_latitude,\n\t\tpassenger_count,\n\t\ttrip_distance,\n\t\tfare_amount,\n\t\textra,\n\t\tmta_tax,\n\t\ttip_amount,\n\t\ttolls_amount,\n\t\tehail_fee,\n\t\timprovement_surcharge,\n\t\ttotal_amount,\n\t\tpayment_type,\n\t\ttrip_type,\n\t\ttrip_year,\n\t\ttrip_month,\n\t\tdataset_file_nm),\n\tcount_taxi_type = count(taxi_type)) ~> DedupeRawGreenTrips\nDedupeRawGreenTrips select(mapColumn(\n\t\ttaxi_type,\n\t\tvendor_id,\n\t\tpickup_datetime,\n\t\tdropoff_datetime,\n\t\tstore_and_fwd_flag,\n\t\trate_code_id,\n\t\tpickup_location_id,\n\t\tdropoff_location_id,\n\t\tpickup_longitude,\n\t\tpickup_latitude,\n\t\tdropoff_longitude,\n\t\tdropoff_latitude,\n\t\tpassenger_count,\n\t\ttrip_distance,\n\t\tfare_amount,\n\t\textra,\n\t\tmta_tax,\n\t\ttip_amount,\n\t\ttolls_amount,\n\t\tehail_fee,\n\t\timprovement_surcharge,\n\t\ttotal_amount,\n\t\tpayment_type,\n\t\ttrip_type,\n\t\tdataset_file_nm\n\t)) ~> SelectDedupedGreenTrips\nSelectDedupedGreenTrips derive(pickup_year = year(pickup_datetime),\n\t\tpickup_month = month(pickup_datetime),\n\t\tpickup_day = dayOfWeek(pickup_datetime),\n\t\tpickup_hour = hour(pickup_datetime),\n\t\tpickup_minute = minute(pickup_datetime),\n\t\tpickup_second = second(pickup_datetime),\n\t\tdropoff_year = year(dropoff_datetime),\n\t\tdropoff_month = month(dropoff_datetime),\n\t\tdropoff_day = dayOfWeek(dropoff_datetime),\n\t\tdropoff_hour = hour(dropoff_datetime),\n\t\tdropoff_minute = minute(dropoff_datetime),\n\t\tdropoff_second = second(dropoff_datetime),\n\t\ttrip_year = substring(dataset_file_nm,(instr(dataset_file_nm, 'trip_year=')+10),4),\n\t\ttrip_month = substring(dataset_file_nm,(instr(dataset_file_nm, 'trip_month=')+11),2)) ~> DeriveGreenTrips\nDeriveGreenTrips, PaymentCodes join(SelectDedupedGreenTrips@payment_type == PaymentCodes@payment_type,\n\tjoinType:'left',\n\tbroadcast: 'right')~> JoinWithPaymentCodes\nJoinWithPaymentCodes, RateCodes join(SelectDedupedGreenTrips@rate_code_id == RateCodes@rate_code_id,\n\tjoinType:'left',\n\tbroadcast: 'right')~> JoinWithRateCodes\nJoinWithRateCodes, TaxiZone join(pickup_location_id == LocationID,\n\tjoinType:'left',\n\tbroadcast: 'right')~> JoinWithTaxiZoneForPickup\nJoinWithTaxiZoneForPickup select(mapColumn(\n\t\ttaxi_type,\n\t\tvendor_id,\n\t\tpickup_datetime,\n\t\tdropoff_datetime,\n\t\tstore_and_fwd_flag,\n\t\trate_code_id = SelectDedupedGreenTrips@rate_code_id,\n\t\tpickup_location_id,\n\t\tdropoff_location_id,\n\t\tpickup_longitude,\n\t\tpickup_latitude,\n\t\tdropoff_longitude,\n\t\tdropoff_latitude,\n\t\tpassenger_count,\n\t\ttrip_distance,\n\t\tfare_amount,\n\t\textra,\n\t\tmta_tax,\n\t\ttip_amount,\n\t\ttolls_amount,\n\t\tehail_fee,\n\t\timprovement_surcharge,\n\t\ttotal_amount,\n\t\tpayment_type = SelectDedupedGreenTrips@payment_type,\n\t\ttrip_type,\n\t\tdataset_file_nm,\n\t\tpickup_year,\n\t\tpickup_month,\n\t\tpickup_day,\n\t\tpickup_hour,\n\t\tpickup_minute,\n\t\tpickup_second,\n\t\tdropoff_year,\n\t\tdropoff_month,\n\t\tdropoff_day,\n\t\tdropoff_hour,\n\t\tdropoff_minute,\n\t\tdropoff_second,\n\t\ttrip_year,\n\t\ttrip_month,\n\t\tpayment_type_description = PaymentCodes@description,\n\t\trate_code_description = RateCodes@description,\n\t\tpickup_borough = Borough,\n\t\tpickup_zone = Zone,\n\t\tpickup_service_zone = service_zone\n\t)) ~> ReorderAndRenamePickupZone\nReorderAndRenamePickupZone, TaxiZone join(dropoff_location_id == LocationID,\n\tjoinType:'left',\n\tbroadcast: 'right')~> JoinWithTaxiZoneForDropOff\nJoinWithTaxiZoneForDropOff select(mapColumn(\n\t\ttaxi_type,\n\t\tvendor_id,\n\t\tpickup_datetime,\n\t\tdropoff_datetime,\n\t\tstore_and_fwd_flag,\n\t\trate_code_id,\n\t\tpickup_location_id,\n\t\tdropoff_location_id,\n\t\tpickup_longitude,\n\t\tpickup_latitude,\n\t\tdropoff_longitude,\n\t\tdropoff_latitude,\n\t\tpassenger_count,\n\t\ttrip_distance,\n\t\tfare_amount,\n\t\textra,\n\t\tmta_tax,\n\t\ttip_amount,\n\t\ttolls_amount,\n\t\tehail_fee,\n\t\timprovement_surcharge,\n\t\ttotal_amount,\n\t\tpayment_type,\n\t\ttrip_type,\n\t\tdataset_file_nm,\n\t\tpickup_year,\n\t\tpickup_month,\n\t\tpickup_day,\n\t\tpickup_hour,\n\t\tpickup_minute,\n\t\tpickup_second,\n\t\tdropoff_year,\n\t\tdropoff_month,\n\t\tdropoff_day,\n\t\tdropoff_hour,\n\t\tdropoff_minute,\n\t\tdropoff_second,\n\t\ttrip_year,\n\t\ttrip_month,\n\t\tpayment_type_description,\n\t\trate_code_description,\n\t\tpickup_borough,\n\t\tpickup_zone,\n\t\tpickup_service_zone,\n\t\tdropoff_borough = Borough,\n\t\tdropoff_zone = Zone,\n\t\tdropoff_service_zone = service_zone\n\t)) ~> ReorderAndRenameDropoffZone\nReorderAndRenameDropoffZone, Vendor join(ReorderAndRenameDropoffZone@vendor_id == Vendor@vendor_id,\n\tjoinType:'left',\n\tbroadcast: 'right')~> JoinWithVendor\nJoinWithVendor select(mapColumn(\n\t\ttaxi_type,\n\t\tvendor_id = ReorderAndRenameDropoffZone@vendor_id,\n\t\tpickup_datetime,\n\t\tdropoff_datetime,\n\t\tstore_and_fwd_flag,\n\t\trate_code_id,\n\t\tpickup_location_id,\n\t\tdropoff_location_id,\n\t\tpickup_longitude,\n\t\tpickup_latitude,\n\t\tdropoff_longitude,\n\t\tdropoff_latitude,\n\t\tpassenger_count,\n\t\ttrip_distance,\n\t\tfare_amount,\n\t\textra,\n\t\tmta_tax,\n\t\ttip_amount,\n\t\ttolls_amount,\n\t\tehail_fee,\n\t\timprovement_surcharge,\n\t\ttotal_amount,\n\t\tpayment_type,\n\t\ttrip_type,\n\t\tdataset_file_nm,\n\t\tpickup_year,\n\t\tpickup_month,\n\t\tpickup_day,\n\t\tpickup_hour,\n\t\tpickup_minute,\n\t\tpickup_second,\n\t\tdropoff_year,\n\t\tdropoff_month,\n\t\tdropoff_day,\n\t\tdropoff_hour,\n\t\tdropoff_minute,\n\t\tdropoff_second,\n\t\ttrip_year,\n\t\ttrip_month,\n\t\tpayment_type_description,\n\t\trate_code_description,\n\t\tpickup_borough,\n\t\tpickup_zone,\n\t\tpickup_service_zone,\n\t\tdropoff_borough,\n\t\tdropoff_zone,\n\t\tdropoff_service_zone,\n\t\tvendor_abbreviation = abbreviation,\n\t\tvendor_description = description\n\t)) ~> FinalColumnList\nFinalColumnList sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\ttruncate: true,\n\tpartitionBy('key',\n\t\t0,\n\t\ttrip_year,\n\t\ttrip_month\n\t)) ~> SinkToCuratedZone"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Load-GreenTrips')]",
+			"type": "Microsoft.DataFactory/factories/dataflows",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"folder": {
+					"name": "01-LoadFromStaging"
+				},
+				"type": "MappingDataFlow",
+				"typeProperties": {
+					"sources": [
+						{
+							"dataset": {
+								"referenceName": "staging_csv_green_taxi_2017H1_2016H2",
+								"type": "DatasetReference"
+							},
+							"name": "ReadSourceGreenTrips2017H12016H2",
+							"description": "Import source CSV data from staging zone (2017H1 + 2016H2)",
+							"typeProperties": {}
+						},
+						{
+							"dataset": {
+								"referenceName": "staging_csv_green_taxi_2015_2016H1",
+								"type": "DatasetReference"
+							},
+							"name": "ReadSourceGreenTrips2016H12015",
+							"description": "Import source CSV data from staging zone (2016H1 + 2015H2)",
+							"typeProperties": {}
+						}
+					],
+					"sinks": [
+						{
+							"dataset": {
+								"referenceName": "raw_parquet_green_trips_2017H1_2016H2",
+								"type": "DatasetReference"
+							},
+							"name": "PersistGreenTrips2017H12016H2ToRawZone",
+							"description": "Persist to raw zone in ADLSGen2 as partitioned Parquet"
+						},
+						{
+							"dataset": {
+								"referenceName": "raw_parquet_green_trips_2015_2016H1",
+								"type": "DatasetReference"
+							},
+							"name": "PersistGreenTrips2016H12015ToRawZone",
+							"description": "Persist to raw zone in ADLSGen2 as partitioned Parquet"
+						}
+					],
+					"script": "\n\nsource(output(\n\t\tVendorID as integer,\n\t\tlpep_pickup_datetime as timestamp,\n\t\tlpep_dropoff_datetime as timestamp,\n\t\tstore_and_fwd_flag as string,\n\t\tRatecodeID as integer,\n\t\tPULocationID as integer,\n\t\tDOLocationID as integer,\n\t\tpassenger_count as integer,\n\t\ttrip_distance as double,\n\t\tfare_amount as double,\n\t\textra as double,\n\t\tmta_tax as double,\n\t\ttip_amount as double,\n\t\ttolls_amount as double,\n\t\tehail_fee as double,\n\t\timprovement_surcharge as double,\n\t\ttotal_amount as double,\n\t\tpayment_type as integer,\n\t\ttrip_type as integer\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\twildcardPaths:['transactional-data/year=2017/month=*/type=green/*.csv','transactional-data/year=2016/month=07/type=green/*.csv','transactional-data/year=2016/month=08/type=green/*.csv','transactional-data/year=2016/month=09/type=green/*.csv','transactional-data/year=2016/month=10/type=green/*.csv','transactional-data/year=2016/month=11/type=green/*.csv','transactional-data/year=2016/month=12/type=green/*.csv']) ~> ReadSourceGreenTrips2017H12016H2\nsource(output(\n\t\tVendorID as integer,\n\t\tlpep_pickup_datetime as timestamp,\n\t\tLpep_dropoff_datetime as timestamp,\n\t\tStore_and_fwd_flag as string,\n\t\tRateCodeID as integer,\n\t\tPickup_longitude as double,\n\t\tPickup_latitude as double,\n\t\tDropoff_longitude as double,\n\t\tDropoff_latitude as double,\n\t\tPassenger_count as integer,\n\t\tTrip_distance as double,\n\t\tFare_amount as double,\n\t\tExtra as double,\n\t\tMTA_tax as double,\n\t\tTip_amount as double,\n\t\tTolls_amount as double,\n\t\tEhail_fee as double,\n\t\timprovement_surcharge as double,\n\t\tTotal_amount as double,\n\t\tPayment_type as integer,\n\t\t{Trip_type } as integer\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\twildcardPaths:['transactional-data/year=2016/month=01/type=green/*.csv','transactional-data/year=2016/month=02/type=green/*.csv','transactional-data/year=2016/month=03/type=green/*.csv','transactional-data/year=2016/month=04/type=green/*.csv','transactional-data/year=2016/month=05/type=green/*.csv','transactional-data/year=2016/month=06/type=green/*.csv','transactional-data/year=2015/month=*/type=green/*.csv']) ~> ReadSourceGreenTrips2016H12015\nReadSourceGreenTrips2017H12016H2 derive(pickup_longitude = '',\n\t\tpickup_latitude = '',\n\t\tdropoff_longitude = '',\n\t\tdropoff_latitude = '',\n\t\ttrip_year = left(toString(lpep_pickup_datetime),4),\n\t\ttrip_month = substring(toString(lpep_pickup_datetime), 6, 2),\n\t\ttaxi_type = 'green') ~> AddDerivedColumnsGreenTrips2017H12016H2\nAddDerivedColumnsGreenTrips2017H12016H2 select(mapColumn(\n\t\ttaxi_type,\n\t\tvendor_id = VendorID,\n\t\tpickup_datetime = lpep_pickup_datetime,\n\t\tdropoff_datetime = lpep_dropoff_datetime,\n\t\tstore_and_fwd_flag,\n\t\trate_code_id = RatecodeID,\n\t\tpickup_location_id = PULocationID,\n\t\tdropoff_location_id = DOLocationID,\n\t\tpickup_longitude,\n\t\tpickup_latitude,\n\t\tdropoff_longitude,\n\t\tdropoff_latitude,\n\t\tpassenger_count,\n\t\ttrip_distance,\n\t\tfare_amount,\n\t\textra,\n\t\tmta_tax,\n\t\ttip_amount,\n\t\ttolls_amount,\n\t\tehail_fee,\n\t\timprovement_surcharge,\n\t\ttotal_amount,\n\t\tpayment_type,\n\t\ttrip_type,\n\t\ttrip_year,\n\t\ttrip_month\n\t)) ~> ReorderGreenTrips2017H12016H2\nReadSourceGreenTrips2016H12015 derive(pickup_location_id = '0',\n\t\tdropoff_location_id = '0',\n\t\ttrip_year = left(toString(lpep_pickup_datetime),4),\n\t\ttrip_month = substring(toString(lpep_pickup_datetime), 6, 2),\n\t\ttaxi_type = 'green') ~> AddDerivedColumnsGreenTrips2016H12015\nAddDerivedColumnsGreenTrips2016H12015 select(mapColumn(\n\t\ttaxi_type,\n\t\tvendor_id = VendorID,\n\t\tpickup_datetime = lpep_pickup_datetime,\n\t\tdropoff_datetime = Lpep_dropoff_datetime,\n\t\tstore_and_fwd_flag = Store_and_fwd_flag,\n\t\trate_code_id = RateCodeID,\n\t\tpickup_location_id,\n\t\tdropoff_location_id,\n\t\tpickup_longitude = Pickup_longitude,\n\t\tpickup_latitude = Pickup_latitude,\n\t\tdropoff_longitude = Dropoff_longitude,\n\t\tdropoff_latitude = Dropoff_latitude,\n\t\tpassenger_count = Passenger_count,\n\t\ttrip_distance = Trip_distance,\n\t\tfare_amount = Fare_amount,\n\t\textra = Extra,\n\t\tmta_tax = MTA_tax,\n\t\ttip_amount = Tip_amount,\n\t\ttolls_amount = Tolls_amount,\n\t\tehail_fee = Ehail_fee,\n\t\timprovement_surcharge,\n\t\ttotal_amount = Total_amount,\n\t\tpayment_type = Payment_type,\n\t\ttrip_type = {Trip_type },\n\t\ttrip_year,\n\t\ttrip_month\n\t)) ~> ReorderGreenTrips2016H12015\nReorderGreenTrips2017H12016H2 sink(input(\n\t\ttaxi_type as string,\n\t\tvendor_id as integer,\n\t\tpickup_datetime as timestamp,\n\t\tdropoff_datetime as timestamp,\n\t\tstore_and_fwd_flag as string,\n\t\trate_code_id as integer,\n\t\tpickup_location_id as string,\n\t\tdropoff_location_id as string,\n\t\tpickup_longitude as double,\n\t\tpickup_latitude as double,\n\t\tdropoff_longitude as double,\n\t\tdropoff_latitude as double,\n\t\tpassenger_count as integer,\n\t\ttrip_distance as double,\n\t\tfare_amount as double,\n\t\textra as double,\n\t\tmta_tax as double,\n\t\ttip_amount as double,\n\t\ttolls_amount as double,\n\t\tehail_fee as double,\n\t\timprovement_surcharge as double,\n\t\ttotal_amount as double,\n\t\tpayment_type as integer,\n\t\ttrip_type as integer,\n\t\ttrip_year as string,\n\t\ttrip_month as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\ttruncate: true,\n\tpartitionBy('key',\n\t\t0,\n\t\ttrip_year,\n\t\ttrip_month\n\t)) ~> PersistGreenTrips2017H12016H2ToRawZone\nReorderGreenTrips2016H12015 sink(input(\n\t\ttaxi_type as string,\n\t\tvendor_id as integer,\n\t\tpickup_datetime as timestamp,\n\t\tdropoff_datetime as timestamp,\n\t\tstore_and_fwd_flag as string,\n\t\trate_code_id as integer,\n\t\tpickup_location_id as string,\n\t\tdropoff_location_id as string,\n\t\tpickup_longitude as double,\n\t\tpickup_latitude as double,\n\t\tdropoff_longitude as double,\n\t\tdropoff_latitude as double,\n\t\tpassenger_count as integer,\n\t\ttrip_distance as double,\n\t\tfare_amount as double,\n\t\textra as double,\n\t\tmta_tax as double,\n\t\ttip_amount as double,\n\t\ttolls_amount as double,\n\t\tehail_fee as double,\n\t\timprovement_surcharge as double,\n\t\ttotal_amount as double,\n\t\tpayment_type as integer,\n\t\ttrip_type as integer,\n\t\ttrip_year as string,\n\t\ttrip_month as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\ttruncate: true,\n\tpartitionBy('key',\n\t\t0,\n\t\ttrip_year,\n\t\ttrip_month\n\t)) ~> PersistGreenTrips2016H12015ToRawZone"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Load-Reference-Data')]",
+			"type": "Microsoft.DataFactory/factories/dataflows",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"folder": {
+					"name": "01-LoadFromStaging"
+				},
+				"type": "MappingDataFlow",
+				"typeProperties": {
+					"sources": [
+						{
+							"dataset": {
+								"referenceName": "staging_csv_payment_code",
+								"type": "DatasetReference"
+							},
+							"name": "StagingRefDataPaymentType",
+							"description": "Import data from staging in CSV format",
+							"typeProperties": {}
+						},
+						{
+							"dataset": {
+								"referenceName": "staging_csv_taxi_zone",
+								"type": "DatasetReference"
+							},
+							"name": "StagingRefDataTaxiZone",
+							"description": "Import data from staging in CSV format",
+							"typeProperties": {}
+						},
+						{
+							"dataset": {
+								"referenceName": "staging_csv_trip_month",
+								"type": "DatasetReference"
+							},
+							"name": "StagingRefDataTripMonth",
+							"typeProperties": {}
+						},
+						{
+							"dataset": {
+								"referenceName": "staging_csv_trip_type",
+								"type": "DatasetReference"
+							},
+							"name": "StagingRefDataTripType",
+							"description": "Import data from staging in CSV format",
+							"typeProperties": {}
+						},
+						{
+							"dataset": {
+								"referenceName": "staging_csv_vendor",
+								"type": "DatasetReference"
+							},
+							"name": "StagingRefDataVendor",
+							"description": "Import data from staging in CSV format",
+							"typeProperties": {}
+						},
+						{
+							"dataset": {
+								"referenceName": "staging_csv_rate_code",
+								"type": "DatasetReference"
+							},
+							"name": "StagingRefDataRateCode",
+							"typeProperties": {}
+						}
+					],
+					"sinks": [
+						{
+							"dataset": {
+								"referenceName": "raw_prq_payment_type",
+								"type": "DatasetReference"
+							},
+							"name": "RawRefDataPaymentType",
+							"description": "Export csv to parquet as single file (small data)"
+						},
+						{
+							"dataset": {
+								"referenceName": "raw_prq_rate_code",
+								"type": "DatasetReference"
+							},
+							"name": "RawRefDataRateCode"
+						},
+						{
+							"dataset": {
+								"referenceName": "raw_prq_taxi_zone",
+								"type": "DatasetReference"
+							},
+							"name": "RawRefDataTaxiZone",
+							"description": "Export csv to parquet as single file (small data)"
+						},
+						{
+							"dataset": {
+								"referenceName": "raw_prq_trip_month",
+								"type": "DatasetReference"
+							},
+							"name": "RawRefDataTripMonth",
+							"description": "Export csv to parquet as single file (small data)"
+						},
+						{
+							"dataset": {
+								"referenceName": "raw_prq_trip_type",
+								"type": "DatasetReference"
+							},
+							"name": "RawRefDataTripType",
+							"description": "Export csv to parquet as single file (small data)"
+						},
+						{
+							"dataset": {
+								"referenceName": "raw_prq_vendor",
+								"type": "DatasetReference"
+							},
+							"name": "RawRefDataVendor",
+							"description": "Export csv to parquet as single file (small data)"
+						}
+					],
+					"script": "\n\nsource(output(\n\t\tpayment_type as short,\n\t\tabbreviation as string,\n\t\tdescription as string\n\t),\n\tallowSchemaDrift: false,\n\tvalidateSchema: false,\n\tpartitionBy('hash', 1)) ~> StagingRefDataPaymentType\nsource(output(\n\t\tLocationID as string,\n\t\tBorough as string,\n\t\tZone as string,\n\t\tservice_zone as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tpartitionBy('hash', 1)) ~> StagingRefDataTaxiZone\nsource(output(\n\t\tTrip_Month as string,\n\t\tMonth_Name_Short as string,\n\t\tMonth_Name_Full as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tpartitionBy('hash', 1)) ~> StagingRefDataTripMonth\nsource(output(\n\t\ttrip_type as string,\n\t\tdescription as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tpartitionBy('hash', 1)) ~> StagingRefDataTripType\nsource(output(\n\t\tvendor_id as short,\n\t\tabbreviation as string,\n\t\tdescription as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tpartitionBy('hash', 1)) ~> StagingRefDataVendor\nsource(output(\n\t\trate_code_id as short,\n\t\tdescription as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tpartitionBy('hash', 1)) ~> StagingRefDataRateCode\nStagingRefDataPaymentType sink(input(\n\t\tpayment_type as short,\n\t\tabbreviation as string,\n\t\tdescription as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tpartitionFileNames:[''],\n\tpartitionBy('hash', 1)) ~> RawRefDataPaymentType\nStagingRefDataRateCode sink(input(\n\t\trate_code_id as short,\n\t\tdescription as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tpartitionFileNames:[''],\n\tpartitionBy('hash', 1)) ~> RawRefDataRateCode\nStagingRefDataTaxiZone sink(input(\n\t\tLocationID as string,\n\t\tBorough as string,\n\t\tZone as string,\n\t\tservice_zone as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tpartitionFileNames:[''],\n\tpartitionBy('hash', 1)) ~> RawRefDataTaxiZone\nStagingRefDataTripMonth sink(input(\n\t\tTrip_Month as string,\n\t\tMonth_Name_Short as string,\n\t\tMonth_Name_Full as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tpartitionFileNames:[''],\n\tpartitionBy('hash', 1)) ~> RawRefDataTripMonth\nStagingRefDataTripType sink(input(\n\t\ttrip_type as string,\n\t\tdescription as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tpartitionFileNames:[''],\n\tpartitionBy('hash', 1)) ~> RawRefDataTripType\nStagingRefDataVendor sink(input(\n\t\tvendor_id as short,\n\t\tabbreviation as string,\n\t\tdescription as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tpartitionFileNames:[''],\n\tpartitionBy('hash', 1)) ~> RawRefDataVendor"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/datasets/staging_csv_taxi_zone')]",
+				"[concat(variables('factoryId'), '/datasets/staging_csv_trip_month')]",
+				"[concat(variables('factoryId'), '/datasets/staging_csv_trip_type')]",
+				"[concat(variables('factoryId'), '/datasets/staging_csv_vendor')]",
+				"[concat(variables('factoryId'), '/datasets/staging_csv_rate_code')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Load-YellowTrips')]",
+			"type": "Microsoft.DataFactory/factories/dataflows",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"folder": {
+					"name": "01-LoadFromStaging"
+				},
+				"type": "MappingDataFlow",
+				"typeProperties": {
+					"sources": [
+						{
+							"dataset": {
+								"referenceName": "staging_csv_yellow_taxi_2017H1_2016H2",
+								"type": "DatasetReference"
+							},
+							"name": "ReadSourceYellowTrips2017H12016H2",
+							"description": "Import source CSV data from staging zone",
+							"typeProperties": {}
+						},
+						{
+							"dataset": {
+								"referenceName": "staging_csv_yellow_taxi_trips_2015_2016H1",
+								"type": "DatasetReference"
+							},
+							"name": "ReadSourceYellowTrips20152016H1",
+							"description": "Import source CSV data from staging zone",
+							"typeProperties": {}
+						}
+					],
+					"sinks": [
+						{
+							"dataset": {
+								"referenceName": "raw_parquet_yellow_trips_2017H1_2016H2",
+								"type": "DatasetReference"
+							},
+							"name": "PersistYellowTrips2017H12016H2ToRawZone",
+							"description": "Persist to raw zone in ADLSGen2 as partitioned Parquet"
+						},
+						{
+							"dataset": {
+								"referenceName": "raw_parquet_yellow_taxi_trips_2015_2016H1",
+								"type": "DatasetReference"
+							},
+							"name": "PersistYellowTrips20152016H1ToRawZone",
+							"description": "Persist to raw zone in ADLSGen2 as partitioned Parquet"
+						}
+					],
+					"script": "\n\nsource(output(\n\t\tVendorID as string,\n\t\ttpep_pickup_datetime as timestamp,\n\t\ttpep_dropoff_datetime as timestamp,\n\t\tpassenger_count as integer,\n\t\ttrip_distance as double,\n\t\tRatecodeID as integer,\n\t\tstore_and_fwd_flag as string,\n\t\tPULocationID as integer,\n\t\tDOLocationID as integer,\n\t\tpayment_type as string,\n\t\tfare_amount as double,\n\t\textra as double,\n\t\tmta_tax as double,\n\t\ttip_amount as double,\n\t\ttolls_amount as double,\n\t\timprovement_surcharge as double,\n\t\ttotal_amount as double\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\trowUrlColumn: 'file_name',\n\twildcardPaths:['transactional-data/year=2017/month=*/type=green/*.csv','transactional-data/year=2016/month=07/type=green/*.csv','transactional-data/year=2016/month=08/type=green/*.csv','transactional-data/year=2016/month=09/type=yellow/*.csv','transactional-data/year=2016/month=10/type=yellow/*.csv','transactional-data/year=2016/month=11/type=yellow/*.csv','transactional-data/year=2016/month=12/type=yellow/*.csv']) ~> ReadSourceYellowTrips2017H12016H2\nsource(output(\n\t\tVendorID as short,\n\t\ttpep_pickup_datetime as timestamp,\n\t\ttpep_dropoff_datetime as timestamp,\n\t\tpassenger_count as short,\n\t\ttrip_distance as double,\n\t\tpickup_longitude as double,\n\t\tpickup_latitude as double,\n\t\tRateCodeID as integer,\n\t\tstore_and_fwd_flag as string,\n\t\tdropoff_longitude as double,\n\t\tdropoff_latitude as double,\n\t\tpayment_type as string,\n\t\tfare_amount as double,\n\t\textra as double,\n\t\tmta_tax as double,\n\t\ttip_amount as double,\n\t\ttolls_amount as double,\n\t\timprovement_surcharge as double,\n\t\ttotal_amount as double\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\twildcardPaths:['transactional-data/year=2015/month=*/type=yellow/*.csv','transactional-data/year=2016/month=01/type=yellow/*.csv','transactional-data/year=2016/month=02/type=yellow/*.csv','transactional-data/year=2016/month=03/type=yellow/*.csv','transactional-data/year=2016/month=04/type=yellow/*.csv','transactional-data/year=2016/month=05/type=yellow/*.csv','transactional-data/year=2016/month=06/type=yellow/*.csv']) ~> ReadSourceYellowTrips20152016H1\nReadSourceYellowTrips2017H12016H2 derive(trip_year = left(toString(tpep_pickup_datetime),4),\n\t\ttrip_month = substring(toString(tpep_pickup_datetime), 6, 2),\n\t\tpickup_latitude = '',\n\t\tdropoff_latitude = '',\n\t\tpickup_longitude = '',\n\t\tdropoff_longitude = '',\n\t\ttaxi_type = 'yellow',\n\t\tjunk1 = '',\n\t\tjunk2 = '',\n\tpartitionBy('key',\n\t\t0,\n\t\ttrip_year,\n\t\ttrip_month\n\t)) ~> AddDerivedColumnsYellowTrips2017H12016H2\nAddDerivedColumnsYellowTrips2017H12016H2 select(mapColumn(\n\t\ttaxi_type,\n\t\tvendor_id = VendorID,\n\t\tpickup_datetime = tpep_pickup_datetime,\n\t\tstore_and_fwd_flag,\n\t\tdropoff_datetime = tpep_dropoff_datetime,\n\t\trate_code_id = RatecodeID,\n\t\tpickup_location_id = PULocationID,\n\t\tdropoff_location_id = DOLocationID,\n\t\tpickup_longitude,\n\t\tpickup_latitude,\n\t\tdropoff_longitude,\n\t\tdropoff_latitude,\n\t\tpassenger_count,\n\t\ttrip_distance,\n\t\tfare_amount,\n\t\textra,\n\t\tmta_tax,\n\t\ttip_amount,\n\t\ttolls_amount,\n\t\timprovement_surcharge,\n\t\ttotal_amount,\n\t\tpayment_type,\n\t\ttrip_year,\n\t\ttrip_month\n\t)) ~> ReorderYellowTrips2017H12016H2\nReadSourceYellowTrips20152016H1 derive(pickup_location_id = '0',\n\t\tdropoff_location_id = '0',\n\t\ttrip_year = substring(toString(tpep_pickup_datetime), 0, 4),\n\t\ttrip_month = substring(toString(tpep_pickup_datetime), 6, 2),\n\t\ttaxi_type = 'yellow') ~> AddDerivedColumnsYellowTrips20152016H1\nAddDerivedColumnsYellowTrips20152016H1 select(mapColumn(\n\t\ttaxi_type,\n\t\tvendor_id = VendorID,\n\t\tpickup_datetime = tpep_pickup_datetime,\n\t\tdropoff_datetime = tpep_dropoff_datetime,\n\t\tstore_and_fwd_flag,\n\t\trate_code_id = RateCodeID,\n\t\tpickup_location_id,\n\t\tdropoff_location_id,\n\t\tpickup_longitude,\n\t\tpickup_latitude,\n\t\tdropoff_longitude,\n\t\tdropoff_latitude,\n\t\tpassenger_count,\n\t\ttrip_distance,\n\t\tfare_amount,\n\t\textra,\n\t\tmta_tax,\n\t\ttip_amount,\n\t\ttolls_amount,\n\t\timprovement_surcharge,\n\t\ttotal_amount,\n\t\tpayment_type,\n\t\ttrip_year,\n\t\ttrip_month\n\t)) ~> ReorderYellowTrips20152016H1\nReorderYellowTrips2017H12016H2 sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tpartitionBy('key',\n\t\t0,\n\t\ttrip_year,\n\t\ttrip_month\n\t)) ~> PersistYellowTrips2017H12016H2ToRawZone\nReorderYellowTrips20152016H1 sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\ttruncate: true,\n\tpartitionBy('key',\n\t\t0,\n\t\ttrip_year,\n\t\ttrip_month\n\t)) ~> PersistYellowTrips20152016H1ToRawZone"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/datasets/staging_csv_yellow_taxi_2017H1_2016H2')]",
+				"[concat(variables('factoryId'), '/datasets/staging_csv_yellow_taxi_trips_2015_2016H1')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Curate-Green-Trips')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "CurateGreenTrips",
+						"type": "ExecuteDataFlow",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"dataflow": {
+								"referenceName": "Curate-GreenTrips",
+								"type": "DataFlowReference",
+								"parameters": {},
+								"datasetParameters": {
+									"RawGreenTrips": {},
+									"PaymentCodes": {},
+									"RateCodes": {},
+									"TaxiZone": {},
+									"Vendor": {},
+									"SinkToCuratedZone": {}
+								}
+							},
+							"staging": {}
+						}
+					}
+				],
+				"folder": {
+					"name": "Development-Debugging"
+				},
+				"annotations": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/dataflows/Curate-GreenTrips')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Load-Reference-Data-To-Raw')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "Load-Reference-Data-To-Raw",
+						"type": "ExecuteDataFlow",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"dataflow": {
+								"referenceName": "Load-Reference-Data",
+								"type": "DataFlowReference",
+								"parameters": {},
+								"datasetParameters": {
+									"StagingRefDataPaymentType": {},
+									"StagingRefDataTaxiZone": {},
+									"StagingRefDataTripMonth": {},
+									"StagingRefDataTripType": {},
+									"StagingRefDataVendor": {},
+									"StagingRefDataRateCode": {},
+									"RawRefDataPaymentType": {},
+									"RawRefDataRateCode": {},
+									"RawRefDataTaxiZone": {},
+									"RawRefDataTripMonth": {},
+									"RawRefDataTripType": {},
+									"RawRefDataVendor": {}
+								}
+							},
+							"staging": {}
+						}
+					}
+				],
+				"folder": {
+					"name": "Development-Debugging"
+				},
+				"annotations": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/dataflows/Load-Reference-Data')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Load-Transaction-Data-To-Raw-GreenTrips')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "Load-Transactions-Data-GreenTrips",
+						"type": "ExecuteDataFlow",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"dataflow": {
+								"referenceName": "Load-GreenTrips",
+								"type": "DataFlowReference",
+								"parameters": {},
+								"datasetParameters": {
+									"ReadSourceGreenTrips2017H12016H2": {},
+									"ReadSourceGreenTrips2016H12015": {},
+									"PersistGreenTrips2017H12016H2ToRawZone": {},
+									"PersistGreenTrips2016H12015ToRawZone": {}
+								}
+							},
+							"staging": {}
+						}
+					}
+				],
+				"folder": {
+					"name": "Development-Debugging"
+				},
+				"annotations": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/dataflows/Load-GreenTrips')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Load-Transaction-Data-To-Raw-YellowTrips')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "Load-Transactions-Data-YellowTrips",
+						"type": "ExecuteDataFlow",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"dataflow": {
+								"referenceName": "Load-YellowTrips",
+								"type": "DataFlowReference",
+								"parameters": {},
+								"datasetParameters": {
+									"ReadSourceYellowTrips2017H12016H2": {},
+									"ReadSourceYellowTrips20152016H1": {},
+									"PersistYellowTrips2017H12016H2ToRawZone": {},
+									"PersistYellowTrips20152016H1ToRawZone": {}
+								}
+							},
+							"staging": {}
+						}
+					}
+				],
+				"folder": {
+					"name": "Development-Debugging"
+				},
+				"annotations": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/dataflows/Load-YellowTrips')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/NYCTaxi-Data-Engineering-Workflow')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "Load-Reference-Data",
+						"type": "ExecuteDataFlow",
+						"dependsOn": [
+							{
+								"activity": "Raw-Ref-Data-Dir",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"dataflow": {
+								"referenceName": "Load-Reference-Data",
+								"type": "DataFlowReference",
+								"parameters": {},
+								"datasetParameters": {
+									"StagingRefDataPaymentType": {},
+									"StagingRefDataTaxiZone": {},
+									"StagingRefDataTripMonth": {},
+									"StagingRefDataTripType": {},
+									"StagingRefDataVendor": {},
+									"StagingRefDataRateCode": {},
+									"RawRefDataPaymentType": {},
+									"RawRefDataRateCode": {},
+									"RawRefDataTaxiZone": {},
+									"RawRefDataTripMonth": {},
+									"RawRefDataTripType": {},
+									"RawRefDataVendor": {}
+								}
+							},
+							"staging": {}
+						}
+					},
+					{
+						"name": "Load-YellowTrips",
+						"type": "ExecuteDataFlow",
+						"dependsOn": [
+							{
+								"activity": "Raw-Transactions-Dir",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"dataflow": {
+								"referenceName": "Load-YellowTrips",
+								"type": "DataFlowReference",
+								"parameters": {},
+								"datasetParameters": {
+									"ReadSourceYellowTrips2017H12016H2": {},
+									"ReadSourceYellowTrips20152016H1": {},
+									"PersistYellowTrips2017H12016H2ToRawZone": {},
+									"PersistYellowTrips20152016H1ToRawZone": {}
+								}
+							},
+							"staging": {}
+						}
+					},
+					{
+						"name": "Load-GreenTrips",
+						"type": "ExecuteDataFlow",
+						"dependsOn": [
+							{
+								"activity": "Raw-Transactions-Dir",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"dataflow": {
+								"referenceName": "Load-GreenTrips",
+								"type": "DataFlowReference",
+								"parameters": {},
+								"datasetParameters": {
+									"ReadSourceGreenTrips2017H12016H2": {},
+									"ReadSourceGreenTrips2016H12015": {},
+									"PersistGreenTrips2017H12016H2ToRawZone": {},
+									"PersistGreenTrips2016H12015ToRawZone": {}
+								}
+							},
+							"staging": {}
+						}
+					},
+					{
+						"name": "Raw-Ref-Data-Dir",
+						"type": "Delete",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"dataset": {
+								"referenceName": "RawReferenceDataTopDir",
+								"type": "DatasetReference",
+								"parameters": {}
+							},
+							"recursive": true,
+							"enableLogging": false
+						}
+					},
+					{
+						"name": "Raw-Transactions-Dir",
+						"type": "Delete",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"dataset": {
+								"referenceName": "RawTransactionDataTopDir",
+								"type": "DatasetReference",
+								"parameters": {}
+							},
+							"recursive": true,
+							"enableLogging": false
+						}
+					},
+					{
+						"name": "CuratedGreenTrips",
+						"type": "Delete",
+						"dependsOn": [
+							{
+								"activity": "Load-GreenTrips",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"dataset": {
+								"referenceName": "CuratedGreenTripsTopDir",
+								"type": "DatasetReference",
+								"parameters": {}
+							},
+							"recursive": true,
+							"enableLogging": false
+						}
+					},
+					{
+						"name": "CurateGreenTrips",
+						"type": "ExecuteDataFlow",
+						"dependsOn": [
+							{
+								"activity": "CuratedGreenTrips",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"dataflow": {
+								"referenceName": "Curate-GreenTrips",
+								"type": "DataFlowReference",
+								"parameters": {},
+								"datasetParameters": {
+									"RawGreenTrips": {},
+									"PaymentCodes": {},
+									"RateCodes": {},
+									"TaxiZone": {},
+									"Vendor": {},
+									"SinkToCuratedZone": {}
+								}
+							},
+							"staging": {}
+						}
+					}
+				],
+				"folder": {
+					"name": "Release"
+				},
+				"annotations": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/dataflows/Load-Reference-Data')]",
+				"[concat(variables('factoryId'), '/dataflows/Load-YellowTrips')]",
+				"[concat(variables('factoryId'), '/dataflows/Load-GreenTrips')]",
+				"[concat(variables('factoryId'), '/dataflows/Curate-GreenTrips')]"
+			]
+		}
+	]
+}

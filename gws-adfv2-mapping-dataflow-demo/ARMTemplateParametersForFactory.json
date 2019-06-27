@@ -1,0 +1,27 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "gws-adfv2-mapping-dataflow-demo"
+		},
+		"gws_adls_gen2_dataflow_accountKey": {
+			"value": ""
+		},
+		"RawReferenceDataTopDir_properties_typeProperties_fileName": {
+			"value": ""
+		},
+		"RawReferenceDataTopDir_properties_typeProperties_folderPath": {
+			"value": "raw/reference-data"
+		},
+		"RawTransactionDataTopDir_properties_typeProperties_fileName": {
+			"value": ""
+		},
+		"RawTransactionDataTopDir_properties_typeProperties_folderPath": {
+			"value": "raw/transactional-data"
+		},
+		"gws_adls_gen2_dataflow_properties_typeProperties_url": {
+			"value": "https://adfmappingdfdemosa.dfs.core.windows.net"
+		}
+	}
+}
