@@ -81,3 +81,10 @@ You will need to provision the following resources:<br>
 ![ADF-4](00-images/03-adf-4.png)
 
 <hr>
+
+4.0.5. You shoudl see the service in your resource group<br>
+
+![ADF-5](00-images/03-adf-5.png)
+
+<hr>
+
