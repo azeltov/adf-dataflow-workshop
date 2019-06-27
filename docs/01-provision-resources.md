@@ -70,13 +70,13 @@ You will need to provision the following resources:<br>
 
 <hr>
 
-3.0.2. Click create<br>
+3.0.3. Create a new logical database server<br>
 
 ![RDBMS-2](00-images/02-rdbms-3.png)
 
 <hr>
 
-3.0.2. Click create<br>
+3.0.4. Enter server details<br>
 
 ![RDBMS-2](00-images/02-rdbms-4.png)
 
