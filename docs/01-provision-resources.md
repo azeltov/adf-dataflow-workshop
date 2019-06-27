@@ -14,7 +14,7 @@ You will need to provision the following resources:<br>
 
 ![RG-2](00-images/00-rg-2.png)
 
-### 2.0. Provision a storage account (v2, hot tier, with HNS enabled) in your Azure subscription
+### 2.0. Provision a storage account (v2, hot tier, with HNS enabled) in your resource group
 
 2.0.1. Go to the resource group and click on "Add"<br>
 
@@ -56,3 +56,10 @@ You will need to provision the following resources:<br>
 
 ![SA-7](00-images/01-storage-7.png)
 
+### 4.0. Provision a Data Factory
+
+4.0.1. Go to the resource group and click on "Add"<br>
+
+![ADF-1](00-images/03-adf-1.png)
+
+<hr>
