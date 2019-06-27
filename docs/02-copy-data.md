@@ -41,8 +41,6 @@ You will need the storage account key fron your instructor in order to copy data
 
 <hr>
 
-### 4.  Configure sink - your ADLS Gen2 storage account
-
 ![Copy-10](00-images/copy-10.png)
 
 <hr>
@@ -55,6 +53,24 @@ You will need the storage account key fron your instructor in order to copy data
 
 <hr>
 
+### 4.  Configure sink - your ADLS Gen2 storage account
+
 ![Copy-13](00-images/copy-13.png)
+
+<hr>
+
+![Copy-14](00-images/copy-14.png)
+
+<hr>
+
+![Copy-15](00-images/copy-15.png)
+
+<hr>
+
+![Copy-16](00-images/copy-16.png)
+
+<hr>
+
+![Copy-17](00-images/copy-17.png)
 
 <hr>
