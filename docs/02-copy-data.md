@@ -99,6 +99,3 @@ You will need the storage account key fron your instructor in order to copy data
 <hr>
 
 
-![Copy-20](00-images/copy-20.png)
-
-<hr>
