@@ -63,3 +63,21 @@ You will need to provision the following resources:<br>
 ![ADF-1](00-images/03-adf-1.png)
 
 <hr>
+
+4.0.2. Search for "data Factory"<br>
+
+![ADF-2](00-images/03-adf-2.png)
+
+<hr>
+
+4.0.3. Enter details<br>
+
+![ADF-3](00-images/03-adf-3.png)
+
+<hr>
+
+4.0.4. Click create<br>
+
+![ADF-4](00-images/03-adf-4.png)
+
+<hr>
