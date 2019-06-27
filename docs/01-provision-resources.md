@@ -13,3 +13,25 @@ You will need to provision the following resources:<br>
 <hr>
 
 ![RG-2](00-images/00-rg-2.png)
+
+### 2.0. Provision a storage account (v2, hot tier, with HNS enabled) in your Azure subscription
+
+![SA-1](00-images/01-storage-1.png)
+
+<hr>
+
+![SA-2](00-images/01-storage-2.png)
+
+<hr>
+
+![SA-3](00-images/01-storage-3.png)
+
+<hr>
+
+![SA-4](00-images/01-storage-4.png)
+
+<hr>
+
+![SA-5](00-images/01-storage-5.png)
+
+<hr>
