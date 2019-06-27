@@ -9,3 +9,7 @@ You will need to provision the following resources:<br>
 ### 1.0. Provision a resource group in your Azure subscription
 
 ![RG-1](00-images/00-rg-1.png)
+
+<hr>
+
+![RG-2](00-images/00-rg-2.png)
