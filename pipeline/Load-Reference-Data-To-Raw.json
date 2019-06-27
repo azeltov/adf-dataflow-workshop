@@ -5,6 +5,7 @@
 			{
 				"name": "Load-Reference-Data-To-Raw",
 				"type": "ExecuteDataFlow",
+				"dependsOn": [],
 				"policy": {
 					"timeout": "7.00:00:00",
 					"retry": 0,
@@ -12,6 +13,7 @@
 					"secureOutput": false,
 					"secureInput": false
 				},
+				"userProperties": [],
 				"typeProperties": {
 					"dataflow": {
 						"referenceName": "Load-Reference-Data",
@@ -19,7 +21,11 @@
 					}
 				}
 			}
-		]
+		],
+		"folder": {
+			"name": "Development-Debugging"
+		},
+		"annotations": []
 	},
 	"type": "Microsoft.DataFactory/factories/pipelines"
 }

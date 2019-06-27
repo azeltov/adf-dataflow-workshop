@@ -20,6 +20,7 @@
 					"secureOutput": false,
 					"secureInput": false
 				},
+				"userProperties": [],
 				"typeProperties": {
 					"dataflow": {
 						"referenceName": "Load-Reference-Data",
@@ -45,6 +46,7 @@
 					"secureOutput": false,
 					"secureInput": false
 				},
+				"userProperties": [],
 				"typeProperties": {
 					"dataflow": {
 						"referenceName": "Load-YellowTrips",
@@ -70,6 +72,7 @@
 					"secureOutput": false,
 					"secureInput": false
 				},
+				"userProperties": [],
 				"typeProperties": {
 					"dataflow": {
 						"referenceName": "Load-GreenTrips",
@@ -80,6 +83,7 @@
 			{
 				"name": "Raw-Ref-Data-Dir",
 				"type": "Delete",
+				"dependsOn": [],
 				"policy": {
 					"timeout": "7.00:00:00",
 					"retry": 0,
@@ -87,6 +91,7 @@
 					"secureOutput": false,
 					"secureInput": false
 				},
+				"userProperties": [],
 				"typeProperties": {
 					"dataset": {
 						"referenceName": "RawReferenceDataTopDir",
@@ -99,6 +104,7 @@
 			{
 				"name": "Raw-Transactions-Dir",
 				"type": "Delete",
+				"dependsOn": [],
 				"policy": {
 					"timeout": "7.00:00:00",
 					"retry": 0,
@@ -106,6 +112,7 @@
 					"secureOutput": false,
 					"secureInput": false
 				},
+				"userProperties": [],
 				"typeProperties": {
 					"dataset": {
 						"referenceName": "RawTransactionDataTopDir",
@@ -133,6 +140,7 @@
 					"secureOutput": false,
 					"secureInput": false
 				},
+				"userProperties": [],
 				"typeProperties": {
 					"dataset": {
 						"referenceName": "CuratedGreenTripsTopDir",
@@ -160,6 +168,7 @@
 					"secureOutput": false,
 					"secureInput": false
 				},
+				"userProperties": [],
 				"typeProperties": {
 					"dataflow": {
 						"referenceName": "Curate-GreenTrips",
@@ -167,7 +176,11 @@
 					}
 				}
 			}
-		]
+		],
+		"folder": {
+			"name": "Release"
+		},
+		"annotations": []
 	},
 	"type": "Microsoft.DataFactory/factories/pipelines"
 }
