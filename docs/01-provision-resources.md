@@ -28,7 +28,7 @@ Look for storage account<br>
 
 <hr>
 
-Fill in the details<br>
+Click create<br>
 
 ![SA-3](00-images/01-storage-3.png)
 
@@ -40,8 +40,13 @@ Fill in the details<br>
 
 <hr>
 
-Fill in the details<br>
+Enable HNS<br>
 
 ![SA-5](00-images/01-storage-5.png)
 
 <hr>
+
+![SA-6](00-images/01-storage-6.png)
+
+<hr>
+
