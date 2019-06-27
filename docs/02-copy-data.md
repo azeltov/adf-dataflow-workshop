@@ -1,7 +1,11 @@
 # Module 2: Copy workshop data using Azure DAta Factory "Copy Activity"
 
 In this module you will (one-time) copy data from the instructor's storage account (blob storage) to your own (ADLS Gen2).<br>
-You will need the storage account key fron your instructor in order to copy data from their account.
+<br>
+*Dependencies:*<br>
+1.  You will need the storage account key from your instructor in order to copy data from their account.<br>
+2.  Install storage explorer and connect to your ADLS Gen2.  You will need this tool to validate data copy.<br>
+https://docs.microsoft.com/en-us/azure/vs-azure-tools-storage-manage-with-storage-explorer
 
 ### 1. Launch Data Factory provisioned
 
