@@ -46,7 +46,11 @@ Enable HNS<br>
 
 <hr>
 
+Validate and create<br>
+
 ![SA-6](00-images/01-storage-6.png)
 
 <hr>
+
+![SA-7](00-images/01-storage-7.png)
 
