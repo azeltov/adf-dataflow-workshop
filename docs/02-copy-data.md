@@ -99,13 +99,16 @@ You will need the storage account key fron your instructor in order to copy data
 
 <hr>
 
-![Copy-23](00-images/copy-23.png)
-
-<hr>
+### 6.  Monitor the run
 
 ![Copy-24](00-images/copy-24.png)
 
 <hr>
+
+![Copy-23](00-images/copy-23.png)
+
+<hr>
+
 
 ![Copy-25](00-images/copy-25.png)
 
