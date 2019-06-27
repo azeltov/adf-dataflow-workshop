@@ -82,7 +82,7 @@ You will need to provision the following resources:<br>
 
 <hr>
 
-3.0.5. Enter server details<br>
+3.0.5. You should see the RDBMS in your resource group<br>
 
 ![RDBMS-2](00-images/02-rdbms-4.png)
 
