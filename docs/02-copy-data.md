@@ -113,3 +113,7 @@ You will need the storage account key fron your instructor in order to copy data
 ![Copy-25](00-images/copy-25.png)
 
 <hr>
+
+![Copy-26](00-images/copy-26.png)
+
+<hr>
