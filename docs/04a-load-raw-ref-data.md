@@ -20,6 +20,9 @@ We will read from staging and persist to parquet in the raw infomation zone.
 
 <hr>
 
+
+### 4.2. Lets review the data in the staging directory
+
 Lets look at the data in the staging zone.
 
 ![2](00-images/ref-dataset-2.png)
@@ -33,9 +36,6 @@ Peek a little deeper.
 <hr>
 
 
-### 4.2. Lets review the data in the staging directory
-
-
 ### 4.3. Create datasets
 
 This is a foundational task.  In your case, the dataset configuration artifacts have been imported, so you dont really have to import anything.  Notice how they are organized into directories/folders?  Simplies organization and should you ever need to delete - can do easily at a directory level.<br><br>
@@ -45,6 +45,13 @@ Lets take one dataset and review both the raw and staging configuration.
 
 #### 4.3.1. Payment type - staging
 
+![4](00-images/ref-dataset-4.png)
+
+<hr>
+
+![5](00-images/ref-dataset-5.png)
+
+<hr>
 
 
 #### 4.3.3. Payment type - raw
