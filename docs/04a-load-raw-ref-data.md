@@ -106,6 +106,8 @@ We will zone in on Payment Type and learn.
 
 <hr>
 
+Note that if you click on "Detect Type", it will read source file and populate the schema and you can change data types here.
+
 ![15](00-images/ref-dataset-15.png)
 
 <hr>
