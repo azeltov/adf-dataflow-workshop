@@ -168,57 +168,80 @@ Otherwise, skip to the next section below.
 
 ### 4a.4. Lets test the dataflow through a pipeline
 
-![25](00-images/ref-dataset-25.png)
-
-<hr>
+1.  Expand the pipeline section and under "Development/debugging", so that we can test the dataflow in isolation.
 
 ![26](00-images/ref-dataset-26.png)
 
 <hr>
 
+2.  Notice that there is a "delete dataset" activity, connected to the data flow for reference data, and with two colored arrows.
+
 ![27](00-images/ref-dataset-27.png)
 
 <hr>
+
+3.  Click on the "delete" activity
 
 ![28](00-images/ref-dataset-28.png)
 
 <hr>
 
+4.  Observe the source. Click on the source directory and take a look.  It is the top level director for the reference data.  We want to delete all, for repeated runs for idempotency.
+
 ![29](00-images/ref-dataset-29.png)
 
 <hr>
+
+5.  Click on the Dataflow, settings tab
 
 ![31](00-images/ref-dataset-31.png)
 
 <hr>
 
+6.  Click on the Dataflow, parameters tab
+
 ![32](00-images/ref-dataset-32.png)
 
 <hr>
+
+7.  Review the connectors between the two activities - on error and on success.  We have the "on error" arrow because the first run will not have any directories to delete and we dont want the job aborted.
 
 ![33](00-images/ref-dataset-33.png)
 
 <hr>
 
+8.  Validate
+
 ![34](00-images/ref-dataset-34.png)
 
 <hr>
+
+9.  Click on debug
 
 ![35](00-images/ref-dataset-35.png)
 
 <hr>
 
+10.  Lets switch to storage explorer and take a look; There should be no data whatsoever
+
 ![36](00-images/ref-dataset-36.png)
 
 <hr>
+
+
+11.  If you click refresh, you should see the directory for reference data
 
 ![37](00-images/ref-dataset-37.png)
 
 <hr>
 
+12.  Click into the diretcory and refresh, you should see 6 directories, one for each dataset 
+
 ![38](00-images/ref-dataset-38.png)
 
 <hr>
+
+13. Switch back to Data Factory and look at the execution details
 
 ![39](00-images/ref-dataset-39.png)
 
@@ -227,6 +250,8 @@ Otherwise, skip to the next section below.
 ![40](00-images/ref-dataset-40.png)
 
 <hr>
+
+14.  Now switch to storage explorer and navigate into payment type to see if a parquet file was created.
 
 ![41](00-images/ref-dataset-41.png)
 
