@@ -137,14 +137,30 @@ You should see this dialog show up. Give it 5-10 minutes.
 
 ![19](00-images/ref-dataset-19.png)
 
-<hr>
+<hr>images
 
 #### 4a.2.4. Lets look at the sink for Payment type
 
-## 4a.3. If you have extra time, review the rest of the sub-flows
+![21](00-images/ref-dataset-21.png)
+
+<hr>
+
+![22](00-images/ref-dataset-22.png)
+
+<hr>
+
+![23](00-images/ref-dataset-23.png)
+
+<hr>
+
+![24](00-images/ref-dataset-24.png)
+
+<hr>
+
+### 4a.3. If you have extra time, review the rest of the sub-flows
 
 They are essentially identical in configuration.
 
-## 4a.4. Lets test the dataflow through a pipeline
+### 4a.4. Lets test the dataflow through a pipeline
 
 
