@@ -164,7 +164,71 @@ You should see this dialog show up. Give it 5-10 minutes.
 ### 4a.3. If you have extra time, review the rest of the sub-flows
 
 They are essentially identical in configuration.
+Otherwise, skip to the next section below.
 
 ### 4a.4. Lets test the dataflow through a pipeline
 
+![25](00-images/ref-dataset-25.png)
+
+<hr>
+
+![26](00-images/ref-dataset-26.png)
+
+<hr>
+
+![27](00-images/ref-dataset-27.png)
+
+<hr>
+
+![28](00-images/ref-dataset-28.png)
+
+<hr>
+
+![29](00-images/ref-dataset-29.png)
+
+<hr>
+
+![31](00-images/ref-dataset-31.png)
+
+<hr>
+
+![32](00-images/ref-dataset-32.png)
+
+<hr>
+
+![33](00-images/ref-dataset-33.png)
+
+<hr>
+
+![34](00-images/ref-dataset-34.png)
+
+<hr>
+
+![35](00-images/ref-dataset-35.png)
+
+<hr>
+
+![36](00-images/ref-dataset-36.png)
+
+<hr>
+
+![37](00-images/ref-dataset-37.png)
+
+<hr>
+
+![38](00-images/ref-dataset-38.png)
+
+<hr>
+
+![39](00-images/ref-dataset-39.png)
+
+<hr>
+
+![40](00-images/ref-dataset-40.png)
+
+<hr>
+
+![41](00-images/ref-dataset-41.png)
+
+<hr>
 
