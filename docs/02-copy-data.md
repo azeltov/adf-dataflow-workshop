@@ -1,4 +1,4 @@
-# Module 2: Copy workshop data using Azure DAta Factory "Copy Activity"
+# Module 2: Copy workshop data using Azure Data Factory v2 "Copy Activity"
 
 In this module you will (one-time) copy data from the instructor's storage account (blob storage) to your own (ADLS Gen2).<br>
 <br>
