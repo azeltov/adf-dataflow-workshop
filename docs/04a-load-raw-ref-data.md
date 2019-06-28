@@ -53,5 +53,27 @@ Lets take one dataset and review both the raw and staging configuration.
 
 <hr>
 
+![5a](00-images/ref-dataset-5a.png)
+
+<hr>
+
 
 #### 4.3.3. Payment type - raw
+
+
+![6](00-images/ref-dataset-6.png)
+
+<hr>
+
+![7](00-images/ref-dataset-7.png)
+
+<hr>
+
+
+![8](00-images/ref-dataset-8.png)
+
+<hr>
+
+![9](00-images/ref-dataset-9.png)
+
+<hr>
