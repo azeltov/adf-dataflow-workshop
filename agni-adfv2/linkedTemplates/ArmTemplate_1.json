@@ -668,6 +668,7 @@
 							{
 								"activity": "Clean-Up-Dirs",
 								"dependencyConditions": [
+									"Failed",
 									"Succeeded"
 								]
 							}
