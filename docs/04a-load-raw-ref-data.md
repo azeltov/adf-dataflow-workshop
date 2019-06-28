@@ -80,15 +80,23 @@ Lets take one dataset and review both the raw and staging configuration.
 
 #### 4a.2.1. Navigate to the Load Reference Data Dataflow
 
-1.  Expand the Data Flow section, then expand the "01-LoadFromStaging" directory and click on "Load-Reference-Data"
+Expand the Data Flow section, then expand the "01-LoadFromStaging" directory and click on "Load-Reference-Data"
 
 ![11](00-images/ref-dataset-11.png)
 
 <hr>
 
+#### 4a.2.2. Note that there are 6 reference datasets and you should see a sub-flow for each
+
+These will run in parallel.
+
 ![12](00-images/ref-dataset-12.png)
 
 <hr>
+
+We will zone in on Payment Type and learn.
+
+#### 4a.2.3. Lets look at the source  for Payment type
 
 ![13](00-images/ref-dataset-13.png)
 
