@@ -112,6 +112,8 @@ Note that if you click on "Detect Type", it will read source file and populate t
 
 <hr>
 
+Select "Single partition" as shown below - we have a very small set of data - partitioning is an anti-pattern for small data as it degrades performance.
+
 ![16](00-images/ref-dataset-16.png)
 
 <hr>
@@ -122,5 +124,9 @@ Note that if you click on "Detect Type", it will read source file and populate t
 <hr>
 
 ![18](00-images/ref-dataset-18.png)
+
+<hr>
+
+![19](00-images/ref-dataset-19.png)
 
 <hr>
