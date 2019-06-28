@@ -16,6 +16,20 @@ consumption<br>
 
 We will read from staging and persist to parquet in the raw infomation zone.
 
+![1](00-images/ref-dataset-1.png)
+
+<hr>
+
+![2](00-images/ref-dataset-2.png)
+
+<hr>
+
+
+![3](00-images/ref-dataset-3.png)
+
+<hr>
+
+
 ### 4.2. Lets review the data in the staging directory
 
 
