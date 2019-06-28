@@ -2,18 +2,19 @@
 	"name": "raw_prq_taxi_zone",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "gws_adls_gen2_dataflow",
+			"referenceName": "my_storage_account",
 			"type": "LinkedServiceReference"
 		},
 		"folder": {
 			"name": "01a-StagingToRaw-ReferenceData/taxi-zone"
 		},
+		"annotations": [],
 		"type": "Parquet",
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
 				"folderPath": "reference-data/taxi-zone",
-				"container": "raw"
+				"fileSystem": "raw"
 			},
 			"compressionCodec": "none"
 		},
