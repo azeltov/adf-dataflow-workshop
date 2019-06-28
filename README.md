@@ -3,4 +3,3 @@
 This is a simple workshop that showcases the data engineering capabilities in Azure Data Factory v2 - Mapping Data Flow, powered by Apache Spark on Azure Databricks. ADFv2 Mapping Dataflow is a powerful and fully managed, serverless ELT solution with drag drop, GUI based interface.
 
 
-I created this to help evangelize plus demystify the service and welcome feeback to improve this workshop.
