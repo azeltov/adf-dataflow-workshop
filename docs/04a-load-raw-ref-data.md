@@ -1,10 +1,10 @@
 
 # Module 4a: Load reference data from staging to raw zone into Paruet
 
-In this module - we will review all the artifacts we imported for reference data in a detailed fashion.<br>
+In this module - we will review all the artifacts we imported for reference data in a detailed fashion and learn from them.<br>
 
 The data engineering work done in this module is -<br>
-Load CSV data in staging zone as parquet to the raw zone.<br>
+Read reference data in CSV format in the staging zone, transform to a more optimal format (space and query efficient), parquet to the raw zone.<br>
 
 ## 4a.1: Dataset review
 
@@ -21,7 +21,6 @@ We will read from staging and persist to parquet in the raw infomation zone.
 ![1](00-images/ref-dataset-1.png)
 
 <hr>
-
 
 ### 4a.1.2. Lets review the data in the staging directory
 
@@ -78,6 +77,10 @@ Lets take one dataset and review both the raw and staging configuration.
 
 
 ## 4a.2: Dataflow review
+
+#### 4a.2.1. Navigate to the Load Reference Data Dataflow
+
+1.  Expand the Data Flow section, then expand the "01-LoadFromStaging" directory and click on "Load-Reference-Data"
 
 ![11](00-images/ref-dataset-11.png)
 
