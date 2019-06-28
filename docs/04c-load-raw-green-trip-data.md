@@ -1,1 +1,1 @@
-# Module 4c: Load gree taxi trip data into raw information zone as Parquet
+# Module 4c: Load green taxi trip data into raw information zone as Parquet
