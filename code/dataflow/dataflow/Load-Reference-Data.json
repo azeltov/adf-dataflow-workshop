@@ -13,8 +13,7 @@
 						"type": "DatasetReference"
 					},
 					"name": "StagingRefDataPaymentType",
-					"description": "Import data from staging in CSV format",
-					"script": "source(output(\n\t\tpayment_type as short,\n\t\tabbreviation as string,\n\t\tdescription as string\n\t),\n\tallowSchemaDrift: false,\n\tvalidateSchema: false,\n\tpartitionBy('hash', 1)) ~> StagingRefDataPaymentType"
+					"description": "Import data from staging in CSV format"
 				},
 				{
 					"dataset": {
@@ -22,16 +21,14 @@
 						"type": "DatasetReference"
 					},
 					"name": "StagingRefDataTaxiZone",
-					"description": "Import data from staging in CSV format",
-					"script": "source(output(\n\t\tLocationID as string,\n\t\tBorough as string,\n\t\tZone as string,\n\t\tservice_zone as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tpartitionBy('hash', 1)) ~> StagingRefDataTaxiZone"
+					"description": "Import data from staging in CSV format"
 				},
 				{
 					"dataset": {
 						"referenceName": "staging_csv_trip_month",
 						"type": "DatasetReference"
 					},
-					"name": "StagingRefDataTripMonth",
-					"script": "source(output(\n\t\tTrip_Month as string,\n\t\tMonth_Name_Short as string,\n\t\tMonth_Name_Full as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tpartitionBy('hash', 1)) ~> StagingRefDataTripMonth"
+					"name": "StagingRefDataTripMonth"
 				},
 				{
 					"dataset": {
@@ -39,8 +36,7 @@
 						"type": "DatasetReference"
 					},
 					"name": "StagingRefDataTripType",
-					"description": "Import data from staging in CSV format",
-					"script": "source(output(\n\t\ttrip_type as string,\n\t\tdescription as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tpartitionBy('hash', 1)) ~> StagingRefDataTripType"
+					"description": "Import data from staging in CSV format"
 				},
 				{
 					"dataset": {
@@ -48,16 +44,14 @@
 						"type": "DatasetReference"
 					},
 					"name": "StagingRefDataVendor",
-					"description": "Import data from staging in CSV format",
-					"script": "source(output(\n\t\tvendor_id as short,\n\t\tabbreviation as string,\n\t\tdescription as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tpartitionBy('hash', 1)) ~> StagingRefDataVendor"
+					"description": "Import data from staging in CSV format"
 				},
 				{
 					"dataset": {
 						"referenceName": "staging_csv_rate_code",
 						"type": "DatasetReference"
 					},
-					"name": "StagingRefDataRateCode",
-					"script": "source(output(\n\t\trate_code_id as short,\n\t\tdescription as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tpartitionBy('hash', 1)) ~> StagingRefDataRateCode"
+					"name": "StagingRefDataRateCode"
 				}
 			],
 			"sinks": [
@@ -67,16 +61,14 @@
 						"type": "DatasetReference"
 					},
 					"name": "RawRefDataPaymentType",
-					"description": "Export csv to parquet as single file (small data)",
-					"script": "StagingRefDataPaymentType sink(input(\n\t\tpayment_type as short,\n\t\tabbreviation as string,\n\t\tdescription as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tpartitionFileNames:[''],\n\tpartitionBy('hash', 1)) ~> RawRefDataPaymentType"
+					"description": "Export csv to parquet as single file (small data)"
 				},
 				{
 					"dataset": {
 						"referenceName": "raw_prq_rate_code",
 						"type": "DatasetReference"
 					},
-					"name": "RawRefDataRateCode",
-					"script": "StagingRefDataRateCode sink(input(\n\t\trate_code_id as short,\n\t\tdescription as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tpartitionFileNames:[''],\n\tpartitionBy('hash', 1)) ~> RawRefDataRateCode"
+					"name": "RawRefDataRateCode"
 				},
 				{
 					"dataset": {
@@ -84,8 +76,7 @@
 						"type": "DatasetReference"
 					},
 					"name": "RawRefDataTaxiZone",
-					"description": "Export csv to parquet as single file (small data)",
-					"script": "StagingRefDataTaxiZone sink(input(\n\t\tLocationID as string,\n\t\tBorough as string,\n\t\tZone as string,\n\t\tservice_zone as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tpartitionFileNames:[''],\n\tpartitionBy('hash', 1)) ~> RawRefDataTaxiZone"
+					"description": "Export csv to parquet as single file (small data)"
 				},
 				{
 					"dataset": {
@@ -93,8 +84,7 @@
 						"type": "DatasetReference"
 					},
 					"name": "RawRefDataTripMonth",
-					"description": "Export csv to parquet as single file (small data)",
-					"script": "StagingRefDataTripMonth sink(input(\n\t\tTrip_Month as string,\n\t\tMonth_Name_Short as string,\n\t\tMonth_Name_Full as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tpartitionFileNames:[''],\n\tpartitionBy('hash', 1)) ~> RawRefDataTripMonth"
+					"description": "Export csv to parquet as single file (small data)"
 				},
 				{
 					"dataset": {
@@ -102,8 +92,7 @@
 						"type": "DatasetReference"
 					},
 					"name": "RawRefDataTripType",
-					"description": "Export csv to parquet as single file (small data)",
-					"script": "StagingRefDataTripType sink(input(\n\t\ttrip_type as string,\n\t\tdescription as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tpartitionFileNames:[''],\n\tpartitionBy('hash', 1)) ~> RawRefDataTripType"
+					"description": "Export csv to parquet as single file (small data)"
 				},
 				{
 					"dataset": {
@@ -111,10 +100,10 @@
 						"type": "DatasetReference"
 					},
 					"name": "RawRefDataVendor",
-					"description": "Export csv to parquet as single file (small data)",
-					"script": "StagingRefDataVendor sink(input(\n\t\tvendor_id as short,\n\t\tabbreviation as string,\n\t\tdescription as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tpartitionFileNames:[''],\n\tpartitionBy('hash', 1)) ~> RawRefDataVendor"
+					"description": "Export csv to parquet as single file (small data)"
 				}
-			]
+			],
+			"script": "\n\nsource(output(\n\t\tpayment_type as short,\n\t\tabbreviation as string,\n\t\tdescription as string\n\t),\n\tallowSchemaDrift: false,\n\tvalidateSchema: false,\n\tpartitionBy('hash', 1)) ~> StagingRefDataPaymentType\nsource(output(\n\t\tLocationID as string,\n\t\tBorough as string,\n\t\tZone as string,\n\t\tservice_zone as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tpartitionBy('hash', 1)) ~> StagingRefDataTaxiZone\nsource(output(\n\t\tTrip_Month as string,\n\t\tMonth_Name_Short as string,\n\t\tMonth_Name_Full as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tpartitionBy('hash', 1)) ~> StagingRefDataTripMonth\nsource(output(\n\t\ttrip_type as string,\n\t\tdescription as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tpartitionBy('hash', 1)) ~> StagingRefDataTripType\nsource(output(\n\t\tvendor_id as short,\n\t\tabbreviation as string,\n\t\tdescription as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tpartitionBy('hash', 1)) ~> StagingRefDataVendor\nsource(output(\n\t\trate_code_id as short,\n\t\tdescription as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tpartitionBy('hash', 1)) ~> StagingRefDataRateCode\nStagingRefDataPaymentType sink(input(\n\t\tpayment_type as short,\n\t\tabbreviation as string,\n\t\tdescription as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tpartitionFileNames:[''],\n\ttruncate: true,\n\tpartitionBy('hash', 1)) ~> RawRefDataPaymentType\nStagingRefDataRateCode sink(input(\n\t\trate_code_id as short,\n\t\tdescription as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tpartitionFileNames:[''],\n\tpartitionBy('hash', 1)) ~> RawRefDataRateCode\nStagingRefDataTaxiZone sink(input(\n\t\tLocationID as string,\n\t\tBorough as string,\n\t\tZone as string,\n\t\tservice_zone as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tpartitionFileNames:[''],\n\tpartitionBy('hash', 1)) ~> RawRefDataTaxiZone\nStagingRefDataTripMonth sink(input(\n\t\tTrip_Month as string,\n\t\tMonth_Name_Short as string,\n\t\tMonth_Name_Full as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tpartitionFileNames:[''],\n\tpartitionBy('hash', 1)) ~> RawRefDataTripMonth\nStagingRefDataTripType sink(input(\n\t\ttrip_type as string,\n\t\tdescription as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tpartitionFileNames:[''],\n\tpartitionBy('hash', 1)) ~> RawRefDataTripType\nStagingRefDataVendor sink(input(\n\t\tvendor_id as short,\n\t\tabbreviation as string,\n\t\tdescription as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tpartitionFileNames:[''],\n\tpartitionBy('hash', 1)) ~> RawRefDataVendor"
 		}
 	}
 }
