@@ -1,0 +1,36 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "agni-adfv2"
+		},
+		"instructor_storage_account_connectionString": {
+			"value": ""
+		},
+		"my_storage_account_accountKey": {
+			"value": ""
+		},
+		"RawReferenceDataTopDir_properties_typeProperties_fileName": {
+			"value": ""
+		},
+		"RawReferenceDataTopDir_properties_typeProperties_folderPath": {
+			"value": "raw/reference-data"
+		},
+		"RawTransactionDataTopDir_properties_typeProperties_fileName": {
+			"value": ""
+		},
+		"RawTransactionDataTopDir_properties_typeProperties_folderPath": {
+			"value": "raw/transactional-data"
+		},
+		"my_storage_account_properties_typeProperties_url": {
+			"value": "https://agnisa.dfs.core.windows.net"
+		},
+		"containerUri": {
+			"value": ""
+		},
+		"containerSasToken": {
+			"value": ""
+		}
+	}
+}
