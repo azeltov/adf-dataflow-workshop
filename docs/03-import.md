@@ -15,9 +15,13 @@ From the git UI, navigate to https://github.com/anagha-microsoft/adf-dataflow-ba
 
 ### 3.4. Import the artifacts in the fork you created into your ADF
 
+#### 3.4.1. Enter your git repo details
+
 ![import-2](00-images/import-2.png)
 
 <hr>
+
+#### 3.4.2. Enter your git repo details
 
 ![import-3](00-images/import-3.png)
 
