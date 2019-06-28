@@ -6,6 +6,8 @@ In this module - we will review all the artifacts we imported for reference data
 The data engineering work done in this module is -<br>
 Load CSV data in staging zone as parquet to the raw zone.<br>
 
+## 4a.1: Dataset review
+
 ### 4.1. Lets review our storage account setup
 
 There are 4 file sstems - one for each information zone.<br>
@@ -75,3 +77,4 @@ Lets take one dataset and review both the raw and staging configuration.
 <hr>
 
 
+## 4a.2: Dataflow review
