@@ -8,7 +8,7 @@ Load CSV data in staging zone as parquet to the raw zone.<br>
 
 ## 4a.1: Dataset review
 
-### 4.1. Lets review our storage account setup
+### 4a.1.1. Lets review our storage account setup
 
 There are 4 file sstems - one for each information zone.<br>
 staging<br>
@@ -23,7 +23,7 @@ We will read from staging and persist to parquet in the raw infomation zone.
 <hr>
 
 
-### 4.2. Lets review the data in the staging directory
+### 4a.1.2. Lets review the data in the staging directory
 
 Lets look at the data in the staging zone.
 
@@ -38,14 +38,14 @@ Peek a little deeper.
 <hr>
 
 
-### 4.3. Create datasets
+### 4a.1.3. Create datasets
 
 This is a foundational task.  In your case, the dataset configuration artifacts have been imported, so you dont really have to import anything.  Notice how they are organized into directories/folders?  Simplies organization and should you ever need to delete - can do easily at a directory level.<br><br>
 
 For each entity, we have one staging dataset and one raw dataset - consider these metadata.<br>
 Lets take one dataset and review both the raw and staging configuration.
 
-#### 4.3.1. Payment type - staging
+#### 4a.1.3.1. Payment type - staging
 
 ![4](00-images/ref-dataset-4.png)
 
@@ -64,7 +64,7 @@ Lets take one dataset and review both the raw and staging configuration.
 <hr>
 
 
-#### 4.3.3. Payment type - raw
+#### 4a.1.3.2. Payment type - raw
 
 
 ![7](00-images/ref-dataset-7.png)
@@ -78,3 +78,5 @@ Lets take one dataset and review both the raw and staging configuration.
 
 
 ## 4a.2: Dataflow review
+
+
