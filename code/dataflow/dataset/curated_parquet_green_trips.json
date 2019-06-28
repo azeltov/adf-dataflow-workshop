@@ -2,18 +2,19 @@
 	"name": "curated_parquet_green_trips",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "gws_adls_gen2_dataflow",
+			"referenceName": "my_storage_account",
 			"type": "LinkedServiceReference"
 		},
 		"folder": {
 			"name": "02-RawToCurated"
 		},
+		"annotations": [],
 		"type": "Parquet",
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
 				"folderPath": "green-trips",
-				"container": "curated"
+				"fileSystem": "curated"
 			},
 			"compressionCodec": "snappy"
 		},

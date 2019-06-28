@@ -2,17 +2,18 @@
 	"name": "CuratedGreenTripsTopDir",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "gws_adls_gen2_dataflow",
+			"referenceName": "my_storage_account",
 			"type": "LinkedServiceReference"
 		},
 		"folder": {
 			"name": "03-Top-Level-Dirs"
 		},
+		"annotations": [],
 		"type": "Parquet",
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"container": "curated"
+				"fileSystem": "curated"
 			},
 			"compressionCodec": "snappy"
 		},
