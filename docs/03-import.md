@@ -37,6 +37,6 @@ Here is what your ADF should look like now.
 
 ### 3.4. Lets do a validation to ensure things look good
 
-Its important that you call your ADLS Gen 2 connection the same as what the instructor did for validation to be successful.<br>
-No fear if you named it differently, just extra work.<br>
-Go to every single dataset and reflect the correct linked service. (Fun :))<br>
+- Its important that you call your ADLS Gen 2 connection the same as what the instructor did for validation to be successful.<br>
+- No fear if you named it differently, just extra work.<br>
+- Go to every single dataset and reflect the correct linked service. (Fun :))<br>
