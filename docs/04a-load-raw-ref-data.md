@@ -137,3 +137,11 @@ To preview, we have to have debug on.  This spinds up a Dtaabricks runtime to ex
 ![19](00-images/ref-dataset-19.png)
 
 <hr>
+
+#### 4a.2.4. If you have extra time, review the rest of the sub-flows
+
+They are essentially identical in configuration.
+
+#### 4a.2.5. Lets test the dataflow through a pipeline
+
+
