@@ -139,10 +139,12 @@ You should see this dialog show up. Give it 5-10 minutes.
 
 <hr>
 
-#### 4a.2.4. If you have extra time, review the rest of the sub-flows
+#### 4a.2.4. Lets look at the sink for Payment type
+
+## 4a.3. If you have extra time, review the rest of the sub-flows
 
 They are essentially identical in configuration.
 
-#### 4a.2.5. Lets test the dataflow through a pipeline
+## 4a.4. Lets test the dataflow through a pipeline
 
 
