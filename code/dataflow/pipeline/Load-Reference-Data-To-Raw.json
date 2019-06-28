@@ -45,6 +45,7 @@
 						"referenceName": "RawReferenceDataTopDir",
 						"type": "DatasetReference"
 					},
+					"recursive": true,
 					"enableLogging": false
 				}
 			}
