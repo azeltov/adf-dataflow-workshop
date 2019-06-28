@@ -2,17 +2,18 @@
 	"name": "staging_csv_yellow_taxi_trips_2015_2016H1",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "gws_adls_gen2_dataflow",
+			"referenceName": "my_storage_account",
 			"type": "LinkedServiceReference"
 		},
 		"folder": {
 			"name": "01b-StagingToRaw-TransactionData/yellow-taxi/2015_2016H1"
 		},
+		"annotations": [],
 		"type": "DelimitedText",
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"container": "staging"
+				"fileSystem": "staging"
 			},
 			"columnDelimiter": ",",
 			"escapeChar": "\\",

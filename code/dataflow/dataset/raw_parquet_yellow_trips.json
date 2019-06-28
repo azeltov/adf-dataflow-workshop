@@ -2,18 +2,19 @@
 	"name": "raw_parquet_yellow_trips",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "gws_adls_gen2_dataflow",
+			"referenceName": "my_storage_account",
 			"type": "LinkedServiceReference"
 		},
 		"folder": {
 			"name": "01b-StagingToRaw-TransactionData/yellow-taxi"
 		},
+		"annotations": [],
 		"type": "Parquet",
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
 				"folderPath": "transactional-data/yellow-trips",
-				"container": "raw"
+				"fileSystem": "raw"
 			},
 			"compressionCodec": "snappy"
 		},
