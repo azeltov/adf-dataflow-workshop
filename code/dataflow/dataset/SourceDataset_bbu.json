@@ -1,0 +1,16 @@
+{
+	"name": "SourceDataset_bbu",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "instructor_storage_account",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureBlob",
+		"typeProperties": {
+			"fileName": "",
+			"folderPath": "instructor-staging"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

@@ -1,0 +1,16 @@
+{
+	"name": "DestinationDataset_bbu",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "my_storage_account",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureBlobFSFile",
+		"typeProperties": {
+			"fileName": "",
+			"folderPath": "staging"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
