@@ -79,4 +79,35 @@ Lets take one dataset and review both the raw and staging configuration.
 
 ## 4a.2: Dataflow review
 
+![11](00-images/ref-dataset-11.png)
 
+<hr>
+
+![12](00-images/ref-dataset-12.png)
+
+<hr>
+
+![13](00-images/ref-dataset-13.png)
+
+<hr>
+
+![14](00-images/ref-dataset-14.png)
+
+<hr>
+
+![15](00-images/ref-dataset-15.png)
+
+<hr>
+
+![16](00-images/ref-dataset-16.png)
+
+<hr>
+
+
+![17](00-images/ref-dataset-17.png)
+
+<hr>
+
+![18](00-images/ref-dataset-18.png)
+
+<hr>
