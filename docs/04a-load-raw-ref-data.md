@@ -20,10 +20,13 @@ We will read from staging and persist to parquet in the raw infomation zone.
 
 <hr>
 
+Lets look at the data in the staging zone.
+
 ![2](00-images/ref-dataset-2.png)
 
 <hr>
 
+Peek a little deeper.
 
 ![3](00-images/ref-dataset-3.png)
 
