@@ -2,18 +2,19 @@
 	"name": "raw_prq_trip_month",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "gws_adls_gen2_dataflow",
+			"referenceName": "my_storage_account",
 			"type": "LinkedServiceReference"
 		},
 		"folder": {
 			"name": "01a-StagingToRaw-ReferenceData/trip-month"
 		},
+		"annotations": [],
 		"type": "Parquet",
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
 				"folderPath": "reference-data/trip-month",
-				"container": "raw"
+				"fileSystem": "raw"
 			},
 			"compressionCodec": "none"
 		},

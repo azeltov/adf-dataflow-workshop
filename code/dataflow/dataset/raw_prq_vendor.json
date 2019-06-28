@@ -2,18 +2,19 @@
 	"name": "raw_prq_vendor",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "gws_adls_gen2_dataflow",
+			"referenceName": "my_storage_account",
 			"type": "LinkedServiceReference"
 		},
 		"folder": {
 			"name": "01a-StagingToRaw-ReferenceData/vendor"
 		},
+		"annotations": [],
 		"type": "Parquet",
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
 				"folderPath": "reference-data/vendor",
-				"container": "raw"
+				"fileSystem": "raw"
 			},
 			"compressionCodec": "none"
 		},
