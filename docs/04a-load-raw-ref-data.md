@@ -57,13 +57,13 @@ Lets take one dataset and review both the raw and staging configuration.
 
 <hr>
 
-
-#### 4.3.3. Payment type - raw
-
-
 ![6](00-images/ref-dataset-6.png)
 
 <hr>
+
+
+#### 4.3.3. Payment type - raw
+
 
 ![7](00-images/ref-dataset-7.png)
 
@@ -74,6 +74,4 @@ Lets take one dataset and review both the raw and staging configuration.
 
 <hr>
 
-![9](00-images/ref-dataset-9.png)
 
-<hr>
