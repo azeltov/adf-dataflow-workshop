@@ -123,12 +123,13 @@ Select "current partitioning" as shown below - we have a very small set of data 
 
 <hr>
 
-To preview, we have to have debug on.  This spinds up a Dtaabricks runtime to execute the Dataflow for developing/debugging.
+To preview, we have to have **debug** on.  This spinds up a Dtaabricks runtime to execute the Dataflow for developing/debugging.
 
 ![20](00-images/ref-dataset-20.png)
 
 <hr>
 
+You should see this dialog show up. Give it 5-10 minutes.
 
 ![18](00-images/ref-dataset-18.png)
 
