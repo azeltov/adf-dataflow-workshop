@@ -24,7 +24,15 @@
 		},
 		"schema": [
 			{
-				"name": "payment_type|abbreviation|description",
+				"name": "payment_type",
+				"type": "String"
+			},
+			{
+				"name": "abbreviation",
+				"type": "String"
+			},
+			{
+				"name": "description",
 				"type": "String"
 			}
 		]
