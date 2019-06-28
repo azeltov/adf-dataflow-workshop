@@ -123,6 +123,10 @@ Select "current partitioning" as shown below - we have a very small set of data 
 
 <hr>
 
+![21](00-images/ref-dataset-21.png)
+
+<hr>
+
 To preview, we have to have **debug** on.  This spinds up a Dtaabricks runtime to execute the Dataflow for developing/debugging.
 
 ![20](00-images/ref-dataset-20.png)
@@ -140,10 +144,6 @@ You should see this dialog show up. Give it 5-10 minutes.
 <hr>images
 
 #### 4a.2.4. Lets look at the sink for Payment type
-
-![21](00-images/ref-dataset-21.png)
-
-<hr>
 
 ![22](00-images/ref-dataset-22.png)
 
