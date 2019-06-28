@@ -2,18 +2,19 @@
 	"name": "raw_parquet_green_trips_2015_2016H1",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "gws_adls_gen2_dataflow",
+			"referenceName": "my_storage_account",
 			"type": "LinkedServiceReference"
 		},
 		"folder": {
 			"name": "01b-StagingToRaw-TransactionData/green-taxi/2015_2016H1"
 		},
+		"annotations": [],
 		"type": "Parquet",
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
 				"folderPath": "transactional-data/green-trips",
-				"container": "raw"
+				"fileSystem": "raw"
 			},
 			"compressionCodec": "snappy"
 		},
