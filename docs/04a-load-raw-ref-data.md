@@ -112,7 +112,7 @@ Note that if you click on "Detect Type", it will read source file and populate t
 
 <hr>
 
-Select "Single partition" as shown below - we have a very small set of data - partitioning is an anti-pattern for small data as it degrades performance.
+Select "current partitioning" as shown below - we have a very small set of data - partitioning is an anti-pattern for small data as it degrades performance.
 
 ![16](00-images/ref-dataset-16.png)
 
