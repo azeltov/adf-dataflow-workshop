@@ -2,18 +2,19 @@
 	"name": "raw_prq_payment_type",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "gws_adls_gen2_dataflow",
+			"referenceName": "my_storage_account",
 			"type": "LinkedServiceReference"
 		},
 		"folder": {
 			"name": "01a-StagingToRaw-ReferenceData/payment-code"
 		},
+		"annotations": [],
 		"type": "Parquet",
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
 				"folderPath": "reference-data/payment-type",
-				"container": "raw"
+				"fileSystem": "raw"
 			},
 			"compressionCodec": "none"
 		},
