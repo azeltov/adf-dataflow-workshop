@@ -1,0 +1,33 @@
+{
+	"name": "raw_prq_trip_type",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "my_storage_account",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "01a-StagingToRaw-ReferenceData/trip-type"
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"folderPath": "reference-data/trip-type",
+				"fileSystem": "raw"
+			},
+			"compressionCodec": "none"
+		},
+		"schema": [
+			{
+				"name": "trip_type",
+				"type": "UTF8"
+			},
+			{
+				"name": "description",
+				"type": "UTF8"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

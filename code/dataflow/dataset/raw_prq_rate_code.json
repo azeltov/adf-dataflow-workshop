@@ -1,0 +1,33 @@
+{
+	"name": "raw_prq_rate_code",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "my_storage_account",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "01a-StagingToRaw-ReferenceData/rate-code"
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"folderPath": "reference-data/rate-code",
+				"fileSystem": "raw"
+			},
+			"compressionCodec": "none"
+		},
+		"schema": [
+			{
+				"name": "rate_code_id",
+				"type": "INT_16"
+			},
+			{
+				"name": "description",
+				"type": "UTF8"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

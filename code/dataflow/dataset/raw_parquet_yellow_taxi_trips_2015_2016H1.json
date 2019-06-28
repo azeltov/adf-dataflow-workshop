@@ -1,0 +1,24 @@
+{
+	"name": "raw_parquet_yellow_taxi_trips_2015_2016H1",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "my_storage_account",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "01b-StagingToRaw-TransactionData/yellow-taxi/2015_2016H1"
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"folderPath": "transactional-data/yellow-trips",
+				"fileSystem": "raw"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

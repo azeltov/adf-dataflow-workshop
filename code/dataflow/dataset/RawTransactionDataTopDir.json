@@ -1,0 +1,19 @@
+{
+	"name": "RawTransactionDataTopDir",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "my_storage_account",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "03-Top-Level-Dirs"
+		},
+		"annotations": [],
+		"type": "AzureBlobFSFile",
+		"typeProperties": {
+			"fileName": "",
+			"folderPath": "raw/transactional-data"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
