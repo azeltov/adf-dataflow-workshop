@@ -15,4 +15,10 @@ From the git UI, navigate to https://github.com/anagha-microsoft/adf-dataflow-ba
 
 ### 3.4. Import the artifacts in the fork you created into your ADF
 
+![import-2](00-images/import-2.png)
 
+<hr>
+
+![import-3](00-images/import-3.png)
+
+<hr>
