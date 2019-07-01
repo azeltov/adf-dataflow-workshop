@@ -257,3 +257,6 @@ Otherwise, skip to the next section below.
 
 <hr>
 
+4a.5. Execute a pipeline trigger run and validate for idempotency
+
+
